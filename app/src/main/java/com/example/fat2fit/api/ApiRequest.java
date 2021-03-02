@@ -69,6 +69,20 @@ public class ApiRequest<T> extends Request<ApiResponse<T>> {
                 resListener, errorListener);
     }
 
+    public static <F> ApiRequest<F> put(
+            Class<F> class0,
+            String url,
+            Map<String, String> headers,
+            JSONObject body,
+            ApiResponse.Listener<F> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        return new ApiRequest<>(
+                Method.PUT, url, class0,
+                headers, body,
+                resListener, errorListener);
+    }
+
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
         return headers != null ? headers : super.getHeaders();

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.android.volley.Response;
+import com.example.fat2fit.models.Group;
 import com.example.fat2fit.models.User;
 import com.example.fat2fit.models.UserToken;
 
@@ -24,6 +25,7 @@ public class Fat2FitApi {
     private Fat2FitApi() {
         headers = new HashMap<>();
         headers.put("Content-Type", "application/json; charset=utf-8");
+
     }
 
     public static synchronized Fat2FitApi getInstance(Context context) {
@@ -49,6 +51,8 @@ public class Fat2FitApi {
         edit.apply();
     }
 
+    //--------------------------------------------------
+
     public ApiRequest<UserToken> login(
             String email,
             String password,
@@ -66,6 +70,12 @@ public class Fat2FitApi {
             return null;
         }
 
+        /* // Up to you if you want to auto load the token
+        ApiResponse.Listener<UserToken> wrapper = data -> {
+            setAuthorization(data.getData().getToken());
+            resListener.onResponse(data);
+        };*/
+
         ApiRequest<UserToken> request = ApiRequest.post(
                 UserToken.class, endpoint, headers,
                 body, resListener, errorListener);
@@ -79,9 +89,8 @@ public class Fat2FitApi {
             User userData,
             ApiResponse.Listener<User> resListener,
             Response.ErrorListener errorListener
-        ) {
+    ) {
         final String endpoint = API_URL + "/account/signup";
-
         JSONObject body = new JSONObject();
 
         try {
@@ -104,5 +113,66 @@ public class Fat2FitApi {
 
         return request;
     }
+
+    //--------------------------------------------------
+
+    public ApiRequest<Group> createGroup(
+            String name,
+            ApiResponse.Listener<Group> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/group/create";
+        JSONObject body = new JSONObject();
+
+        try {
+            body.put("name", name);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        ApiRequest<Group> request = ApiRequest.post(
+                Group.class, endpoint,
+                headers, body,
+                resListener, errorListener);
+
+        RequestHelper.addToRequestQueue(request);
+
+        return request;
+    }
+
+    public ApiRequest<Group> joinGroup(
+            String groupId,
+            ApiResponse.Listener<Group> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/group/join/" + groupId;
+
+        ApiRequest<Group> request = ApiRequest.put(
+                Group.class, endpoint,
+                headers, null,
+                resListener, errorListener);
+
+        RequestHelper.addToRequestQueue(request);
+
+        return request;
+    }
+
+    public ApiRequest<Group> getGroup(
+            String groupId,
+            ApiResponse.Listener<Group> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/group/" + groupId;
+
+        ApiRequest<Group> request = ApiRequest.get(
+                Group.class, endpoint, headers,
+                resListener, errorListener);
+
+        RequestHelper.addToRequestQueue(request);
+
+        return request;
+    }
+
 }
 
