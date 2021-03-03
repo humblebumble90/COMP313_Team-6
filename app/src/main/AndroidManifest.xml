@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fat2Fit">
-        <activity android:name=".RecommendedWorkoutActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".RecommendedWorkoutActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".UserProfileActivity"></activity>
+        <activity android:name=".UserProfileActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

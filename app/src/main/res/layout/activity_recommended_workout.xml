@@ -7,10 +7,10 @@
     tools:context=".RecommendedWorkoutActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/recommendedWorkoutText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recommended Worksouts"
+        android:text="Recommended Workouts"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/BMIText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Based on Your BMI of :"
@@ -31,10 +31,10 @@
         app:layout_constraintVertical_bias="0.13" />
 
     <TextView
-        android:id="@+id/BMILabel"
+        android:id="@+id/BMIValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="value"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.786"
@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.13" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/fitnessText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fitness Type:"
@@ -55,10 +55,10 @@
         app:layout_constraintVertical_bias="0.242" />
 
     <TextView
-        android:id="@+id/fitnessTypeLabel"
+        android:id="@+id/fitnessValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
+        android:text="value"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.298"
@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.241" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/workRateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Work Rate"
@@ -79,10 +79,10 @@
         app:layout_constraintVertical_bias="0.279" />
 
     <TextView
-        android:id="@+id/workRateLabel"
+        android:id="@+id/workRateValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2"
+        android:text="value"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.297"
@@ -91,7 +91,7 @@
         app:layout_constraintVertical_bias="0.278" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/instructionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Instructions:"
@@ -103,10 +103,10 @@
         app:layout_constraintVertical_bias="0.323" />
 
     <TextView
-        android:id="@+id/instructionLabel"
+        android:id="@+id/instructionValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3"
+        android:text="value"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.297"
@@ -115,7 +115,7 @@
         app:layout_constraintVertical_bias="0.323" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/progressText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Progress:"
@@ -127,10 +127,10 @@
         app:layout_constraintVertical_bias="0.37" />
 
     <TextView
-        android:id="@+id/progressLabel"
+        android:id="@+id/progressValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="4"
+        android:text="value"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.297"
