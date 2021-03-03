@@ -1,3 +1,59 @@
 <resources>
-    <string name="app_name">Fat2Fit</string>
+    <string name="app_name">Insta Bod</string>
+    <string name="logout_button">Log Out</string>
+    <string name="userprofile_button">User Profile</string>
+    <string name="workout_textview">WORKOUT</string>
+    <string name="fitnessinformation_textview"><u>Fitness Information</u></string>
+    <string name="RFM_textview">RFM: </string>
+    <string name="pushups_textview">Push Ups: </string>
+    <string name="situps_textview">Sit Ups: </string>
+    <string name="day1_textview">DAY 1</string>
+    <string name="day2_textview">DAY 2</string>
+    <string name="day3_textview">DAY 3</string>
+    <string name="day4_textview">DAY 4</string>
+    <string name="day5_textview">DAY 5</string>
+    <string name="day6_textview">DAY 6</string>
+    <string name="day7_textview">DAY 7</string>
+    <string name="day1Name_textview">Name: </string>
+    <string name="day1Reps_textview">Reps: </string>
+    <string name="sharedpreference">WorkoutUserSharedPreferences</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_profile_textview">USER PROFILE</string>
+    <string name="submit_button">SUBMIT</string>
+    <string name="frequency_textview">Frequency of Exercise</string>
+    <string name="tutorial_textview">tutorial</string>
+    <string name="situp_textview">Situp Score</string>
+    <string name="pushup_textview">Push up Score</string>
+    <string name="waist_textview">Waist Circumference</string>
+    <string name="height_textview">Height</string>
+    <string name="adminPage_textview">ADMIN HOME PAGE</string>
+    <string name="searchButton_textview">SEARCH</string>
+    <string name="resetButton_textview">RESET</string>
+
+    <string name="modify_button">MODIFY</string>
+    <string name="modify_user_profile_textview">MODIFY USER PROFILE</string>
+
+    <string name="login_textview">LOG IN</string>
+    <string name="username_textview">Enter Username</string>
+    <string name="enter_password_textview">Enter Password</string>
+    <string name="sign_up_textview">Sign Up</string>
+    <string name="forgot_password_textview">Forgot Password?</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="next">Next</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="gender">Gender</string>
+    <string name="security_question_1">Security Question 1</string>
+    <string name="select_the_first_security_question">Select the First Security Question</string>
+    <string name="security_question_answer_1">Security Question Answer 1</string>
+    <string name="security_question_2">Security Question 2</string>
+    <string name="select_the_second_security_question">Select the Second Security Question</string>
+    <string name="security_question_answer_2">Security Question Answer 2</string>
+
+    <string name="new_password">New Password</string>
+    <string name="reset">RESET</string>
+    <string name="forgot_password">FORGOT PASSWORD</string>
+    <string name="next_button">NEXT</string>
+
 </resources>

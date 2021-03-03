@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.fat2fit.api.Fat2FitApi;
+
 public class MainActivity extends AppCompatActivity {
+    // private Fat2FitApi api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, HomeActivity.class));
             }
         });
+        // api = Fat2FitApi.getInstance(this);
+        // api.login("email", "password", res -> {}, err -> {});
     }
 
 }
