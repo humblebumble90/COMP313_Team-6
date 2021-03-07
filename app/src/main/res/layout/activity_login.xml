@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:src="@mipmap/ic_app_logo" />
+
+    <TextView
+        android:id="@+id/enterUserNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100px"
+        android:layout_marginTop="550px"
+        android:text="@string/username_textview"
+        android:textColor="@color/colorBlack" />
+
+    <EditText
+        android:id="@+id/usernameText"
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100px"
+        android:layout_marginTop="600px"
+        android:ems="10"
+        android:hint="Enter your username" />
+
+    <TextView
+        android:id="@+id/passwordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100px"
+        android:layout_marginTop="750px"
+        android:text="@string/enter_password_textview"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/forgotTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100px"
+        android:layout_marginTop="950px"
+        android:onClick="forgotPassword"
+        android:text="@string/forgot_password_textview"
+        android:textColor="@color/colorGreen" />
+
+    <EditText
+        android:id="@+id/editWaistText2"
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100px"
+        android:layout_marginTop="800px"
+        android:ems="10"
+        android:hint="Enter Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="600px"
+        android:layout_height="200px"
+        android:layout_marginLeft="250px"
+        android:layout_marginTop="1050px"
+        android:background="@color/colorGreen"
+        android:text="@string/login_textview"
+        android:textColor="@android:color/white"
+        android:onClick="login"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/signupButton"
+        android:layout_width="600px"
+        android:layout_height="200px"
+        android:layout_marginLeft="250px"
+        android:layout_marginTop="1270px"
+        android:background="@color/colorGreen"
+        android:onClick="signUp"
+        android:text="@string/sign_up_textview"
+        android:textColor="@android:color/white"
+        android:textSize="25dp" />
+</RelativeLayout>
