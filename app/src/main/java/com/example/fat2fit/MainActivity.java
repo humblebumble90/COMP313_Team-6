@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Button launchBtn = (Button) findViewById(R.id.loginBtn);
         launchBtn.setOnClickListener (new View.OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
         // api = Fat2FitApi.getInstance(this);
