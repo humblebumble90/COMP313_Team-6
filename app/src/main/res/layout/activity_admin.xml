@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminActivity">
+
+    <TextView
+        android:id="@+id/workout_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/adminPage_textview"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100px"
+        android:layout_marginTop="230px"
+        android:ems="10"
+        android:hint="Search Username" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="135dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="150dp"
+        android:background="@color/colorGreen"
+        android:onClick="search"
+        android:text="@string/searchButton_textview"
+        android:textColor="@android:color/white"
+        android:textSize="12sp" />
+
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="135dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="150dp"
+        android:background="@color/colorGreen"
+        android:onClick="reset"
+        android:text="@string/resetButton_textview"
+        android:textColor="@android:color/white"
+        android:textSize="12sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="220dp"
+        android:fillViewport="true"
+
+        >
+
+        <ListView
+            android:id="@+id/workout_user_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+</RelativeLayout>
