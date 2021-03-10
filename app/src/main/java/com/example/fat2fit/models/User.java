@@ -2,8 +2,11 @@ package com.example.fat2fit.models;
 
 public class User {
     private String _id, email, firstName, lastName, password;
-    // private int __v = 0;
-
+    
+    // NOTE: Not sure if these data types are correct,
+    // please feel free to change them
+    private float height, waist;
+    private int pushupScore, situpScore, freq;
 
     public User() {}
 
@@ -48,5 +51,40 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public float getWaist() {
+        return waist;
+    }
+    public void setWaist(float waist) {
+        this.waist = waist;
+    }
+
+    public int getPushupScore() {
+        return pushupScore;
+    }
+    public void setPushupScore(int pushupScore) {
+        this.pushupScore = pushupScore;
+    }
+
+    public int getSitupScore() {
+        return situpScore;
+    }
+    public void setSitupScore(int situpScore) {
+        this.situpScore = situpScore;
+    }
+
+    public int getFreq() {
+        return freq;
+    }
+    public void setFreq(int freq) {
+        this.freq = freq;
     }
 }

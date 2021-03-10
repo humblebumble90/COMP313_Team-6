@@ -3,8 +3,11 @@ package com.example.fat2fit.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.annotation.Nullable;
+
 import com.android.volley.Response;
 import com.example.fat2fit.models.Group;
+import com.example.fat2fit.models.GroupActivity;
 import com.example.fat2fit.models.User;
 import com.example.fat2fit.models.UserToken;
 
@@ -17,7 +20,9 @@ import java.util.Map;
 public class Fat2FitApi {
     private static final String
             AUTH_HEADER = "Authorization",
+            BEARER_PREFIX = "Bearer ",
             API_URL = "https://fat2fit-api.herokuapp.com";
+    private static final JSONObject EMPTY_JSON = new JSONObject();
 
     private static Fat2FitApi instance;
     private final Map<String, String> headers;
@@ -25,7 +30,15 @@ public class Fat2FitApi {
     private Fat2FitApi() {
         headers = new HashMap<>();
         headers.put("Content-Type", "application/json; charset=utf-8");
+        loadAuthorization();
+    }
 
+    private void loadAuthorization() {
+        SharedPreferences prefs = RequestHelper.getPrefs();
+        String token = prefs.getString(AUTH_HEADER, "");
+        if (!token.isEmpty()) {
+            headers.put(AUTH_HEADER, BEARER_PREFIX + token);
+        }
     }
 
     public static synchronized Fat2FitApi getInstance(Context context) {
@@ -42,13 +55,21 @@ public class Fat2FitApi {
     public void setAuthorization(String token) {
         SharedPreferences.Editor edit = RequestHelper.getPrefs().edit();
         if (token != null) {
-            headers.put(AUTH_HEADER, "Bearer " + token);
+            headers.put(AUTH_HEADER, BEARER_PREFIX + token);
             edit.putString(AUTH_HEADER, token);
         } else {
             headers.remove(AUTH_HEADER);
             edit.remove(AUTH_HEADER);
         }
         edit.apply();
+    }
+
+    public String getAuthorization() {
+        try {
+            return headers.get(AUTH_HEADER);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     //--------------------------------------------------
@@ -70,18 +91,17 @@ public class Fat2FitApi {
             return null;
         }
 
-        /* // Up to you if you want to auto load the token
+         // Up to you if you want to auto load the token
         ApiResponse.Listener<UserToken> wrapper = data -> {
             setAuthorization(data.getData().getToken());
             resListener.onResponse(data);
-        };*/
+        };
 
         ApiRequest<UserToken> request = ApiRequest.post(
                 UserToken.class, endpoint, headers,
-                body, resListener, errorListener);
+                body, wrapper, errorListener);
 
         RequestHelper.addToRequestQueue(request);
-
         return request;
     }
 
@@ -110,7 +130,33 @@ public class Fat2FitApi {
                 body, resListener, errorListener);
 
         RequestHelper.addToRequestQueue(request);
+        return request;
+    }
 
+    public ApiRequest<User> sendFitData(
+            User data,
+            ApiResponse.Listener<User> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/account/fitdata";
+        JSONObject body = new JSONObject();
+
+        try {
+            body.put("waist", data.getWaist());
+            body.put("height", data.getHeight());
+            body.put("situpScore", data.getSitupScore());
+            body.put("pushupScore", data.getPushupScore());
+            body.put("freq", data.getFreq());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        ApiRequest<User> request = ApiRequest.post(
+                User.class, endpoint, headers,
+                body, resListener, errorListener);
+
+        RequestHelper.addToRequestQueue(request);
         return request;
     }
 
@@ -137,7 +183,6 @@ public class Fat2FitApi {
                 resListener, errorListener);
 
         RequestHelper.addToRequestQueue(request);
-
         return request;
     }
 
@@ -150,11 +195,26 @@ public class Fat2FitApi {
 
         ApiRequest<Group> request = ApiRequest.put(
                 Group.class, endpoint,
-                headers, null,
+                headers, EMPTY_JSON,
                 resListener, errorListener);
 
         RequestHelper.addToRequestQueue(request);
+        return request;
+    }
 
+    public ApiRequest<String> leaveGroup(
+            String groupId,
+            ApiResponse.Listener<String> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/group/leave/" + groupId;
+
+        ApiRequest<String> request = ApiRequest.put(
+                String.class, endpoint,
+                headers, EMPTY_JSON,
+                resListener, errorListener);
+
+        RequestHelper.addToRequestQueue(request);
         return request;
     }
 
@@ -170,7 +230,36 @@ public class Fat2FitApi {
                 resListener, errorListener);
 
         RequestHelper.addToRequestQueue(request);
+        return request;
+    }
 
+    public ApiRequest<GroupActivity> createGroupActivity(
+            String groupId,
+            String title, String description,
+            @Nullable String hyperlink,
+            ApiResponse.Listener<GroupActivity> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/group/" + groupId + "/activity/create";
+        JSONObject body = new JSONObject();
+
+        try {
+            body.put("title", title);
+            body.put("description", description);
+            if (hyperlink != null && !hyperlink.isEmpty()) {
+                body.put("hyperlink", hyperlink);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        ApiRequest<GroupActivity> request = ApiRequest.post(
+                GroupActivity.class, endpoint,
+                headers, body,
+                resListener, errorListener);
+
+        RequestHelper.addToRequestQueue(request);
         return request;
     }
 

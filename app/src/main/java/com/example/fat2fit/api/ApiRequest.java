@@ -123,7 +123,7 @@ public class ApiRequest<T> extends Request<ApiResponse<T>> {
             ApiResponse<T> data = ApiResponse.from(class0, json);
             return data.isOK()
                 ? Response.success(data, HttpHeaderParser.parseCacheHeaders(response))
-                : Response.error(new VolleyError(response));
+                : Response.error(new ApiResponse.MetaVolleyError(data.getMeta()));
         } catch (UnsupportedEncodingException | JsonSyntaxException | JSONException e) {
             return Response.error(new ParseError(e));
         }
