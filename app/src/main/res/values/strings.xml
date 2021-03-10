@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Insta Bod</string>
+    <string name="app_name">Fat 2 Fit</string>
     <string name="logout_button">Log Out</string>
     <string name="userprofile_button">User Profile</string>
     <string name="workout_textview">WORKOUT</string>
