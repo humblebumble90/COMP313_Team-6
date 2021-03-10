@@ -1,6 +1,9 @@
 package com.example.fat2fit.api;
 
+import android.util.Log;
+
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,14 +47,21 @@ public class ApiResponse<T> {
     public T getData() { return data; }
     public void setData(T data) { this.data = data; }
 
+    @SuppressWarnings("unchecked")
     public static <F> ApiResponse<F> from(Class<F> class0, JSONObject json) {
         ApiResponse<F> res = new ApiResponse<>();
         try {
-            JSONObject meta = json.getJSONObject("meta"),
-                    data = json.getJSONObject("data");
-
+            JSONObject meta = json.getJSONObject("meta");
             res.setMeta(RequestHelper.fromJson(meta, Meta.class));
-            res.setData(RequestHelper.fromJson(data, class0));
+
+            if (res.isOK()) {
+                if (class0 == String.class) {
+                    res.setData((F)json.getString("data"));
+                } else {
+                    JSONObject data = json.getJSONObject("data");
+                    res.setData(RequestHelper.fromJson(data, class0));
+                }
+            }
         } catch (JSONException e) {
             e.printStackTrace();
             res.setMetaData(567, e.getMessage());
@@ -59,8 +69,6 @@ public class ApiResponse<T> {
 
         return res;
     }
-
-    public interface Listener<T> extends Response.Listener<ApiResponse<T>> {}
 
     public static class Meta {
         private int code;
@@ -98,6 +106,22 @@ public class ApiResponse<T> {
         @Override
         public String toString() {
             return String.format("{ code: %s, msg: \"%s\" }", code, msg);
+        }
+    }
+
+    public interface Listener<T> extends Response.Listener<ApiResponse<T>> {}
+
+    public static class MetaVolleyError extends VolleyError {
+        private final Meta meta;
+
+        public MetaVolleyError(Meta meta) {
+            super(meta.getMsg());
+            this.meta = meta;
+        }
+
+        @Override
+        public String getMessage() {
+            return meta.getMsg();
         }
     }
 }
