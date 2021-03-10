@@ -3,13 +3,19 @@ package com.example.fat2fit;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
-public class UserProfileActivity extends AppCompatActivity {
+public class AdminActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        setContentView(R.layout.activity_admin);
     }
-    //Todo: Functions need to be implemented for values in the UI and on click actions.
+
+    public void search(View view) {
+    }
+
+    public void reset(View view) {
+    }
 }
