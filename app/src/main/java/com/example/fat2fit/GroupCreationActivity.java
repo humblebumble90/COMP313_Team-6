@@ -17,20 +17,18 @@ public class GroupCreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_creation);
-        Button createGroupBtn = (Button) findViewById(R.id.createGroupBtn);
+    }
+// todo: doesnt actually create a group yet, just has the views and toast. Create Functions to create group
+    public void createGroup(View view)
+    {
         EditText groupName = findViewById(R.id.groupName);
-        createGroupBtn.setOnClickListener (new View.OnClickListener(){
-            public void onClick(View v){
-                Context context = getApplicationContext();
-                String text = "Your Group Has Been Created \n Group Name:" + groupName.getText().toString();
+        Context context = getApplicationContext();
+        String text = "Your Group Has Been Created \n Group Name:" + groupName.getText().toString();
 
-                int duration = Toast.LENGTH_SHORT;
+        int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-                startActivity(new Intent(GroupCreationActivity.this, HomeActivity.class));
-            }
-
-        });
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+        startActivity(new Intent(GroupCreationActivity.this, HomeActivity.class));
     }
 }

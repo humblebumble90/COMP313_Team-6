@@ -13,18 +13,22 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        /*when pressed will move the screen to a new activity */
-        Button recommendedWorkoutBtn = (Button) findViewById(R.id.recommendedWorkoutBtn);
-        Button groupCreationBtn = (Button) findViewById(R.id.groupCreationBtn);
-        recommendedWorkoutBtn.setOnClickListener (new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(HomeActivity.this, RecommendedWorkoutActivity.class));
-            }
-        });
-        groupCreationBtn.setOnClickListener (new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(HomeActivity.this, GroupCreationActivity.class));
-            }
-        });
+    }
+
+    public void recommendedWorkout(View view)
+    {
+        startActivity(new Intent(HomeActivity.this, RecommendedWorkoutActivity.class));
+    }
+
+    public void groupCreation(View view)
+    {
+        startActivity(new Intent(HomeActivity.this, GroupCreationActivity.class));
+    }
+
+    public void userProfile(View view)
+    {
+        //for somereason moving to the userprofile activity crashes the app
+        System.out.println("user profile button pushed");
+        //startActivity(new Intent(HomeActivity.this, UserProfileActivity.class));
     }
 }

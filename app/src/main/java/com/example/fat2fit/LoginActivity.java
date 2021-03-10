@@ -44,5 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         System.out.println("forgotPassword button pushed");
     }
 
+    public void skip(View view)
+    {
+        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+    }
+
 
 }

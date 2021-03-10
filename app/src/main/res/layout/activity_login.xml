@@ -83,4 +83,20 @@
         android:text="@string/sign_up_textview"
         android:textColor="@android:color/white"
         android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="250px"
+        android:layout_marginTop="1270px"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorGreen"
+        android:onClick="skip"
+        android:text="placeholder to skip login"
+        android:textColor="@android:color/white"
+        android:textSize="25dp" />
 </RelativeLayout>
