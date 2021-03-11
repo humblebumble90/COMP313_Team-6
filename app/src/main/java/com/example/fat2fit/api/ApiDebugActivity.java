@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -39,7 +40,17 @@ public class ApiDebugActivity extends AppCompatActivity {
     }
 
     public void onDebugButtonPress(View v) {
-        testCreateActivity();
+        testGetUserInfo();
+    }
+
+    private void testGetUserInfo() {
+        api.getUserInfo(res -> {
+            User user = res.getData();
+            if (user.getRole() == User.Roles.END_USER) {
+                Toast.makeText(this, "End user!", Toast.LENGTH_LONG).show();
+            }
+            setSuccessText(RequestHelper.toJson(user));
+        }, stdErrListener);
     }
 
     private void testCreateActivity() {

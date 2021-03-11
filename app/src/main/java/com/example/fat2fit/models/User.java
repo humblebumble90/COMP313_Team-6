@@ -1,8 +1,16 @@
 package com.example.fat2fit.models;
 
 public class User {
+    public interface Roles {
+        char END_USER = 'U';
+        char ADMIN = 'A';
+        char CUSTOMER_REP = 'C';
+    }
+
     private String _id, email, firstName, lastName, password;
-    
+
+    private char role = 'U';
+
     // NOTE: Not sure if these data types are correct,
     // please feel free to change them
     private float height, waist;
@@ -51,6 +59,13 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public char getRole() {
+        return role;
+    }
+    public void setRole(char role) {
+        this.role = role;
     }
 
     public float getHeight() {

@@ -2,6 +2,7 @@ package com.example.fat2fit.api;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -128,6 +129,19 @@ public class Fat2FitApi {
         ApiRequest<User> request = ApiRequest.post(
                 User.class, endpoint, headers,
                 body, resListener, errorListener);
+
+        RequestHelper.addToRequestQueue(request);
+        return request;
+    }
+
+    public ApiRequest<User> getUserInfo(
+            ApiResponse.Listener<User> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/account/info";
+        ApiRequest<User> request = ApiRequest.get(
+                User.class, endpoint, headers,
+                resListener, errorListener);
 
         RequestHelper.addToRequestQueue(request);
         return request;
