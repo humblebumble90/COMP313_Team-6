@@ -58,6 +58,7 @@ public class ApiResponse<T> {
                 if (class0 == String.class) {
                     res.setData((F)json.getString("data"));
                 } else {
+                    Log.d("JSON_OBJECT", "" + json);
                     JSONObject data = json.getJSONObject("data");
                     res.setData(RequestHelper.fromJson(data, class0));
                 }
