@@ -9,12 +9,14 @@ import androidx.annotation.Nullable;
 import com.android.volley.Response;
 import com.example.fat2fit.models.Group;
 import com.example.fat2fit.models.GroupActivity;
+import com.example.fat2fit.models.PasswordSecurity;
 import com.example.fat2fit.models.User;
 import com.example.fat2fit.models.UserToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,6 +110,7 @@ public class Fat2FitApi {
 
     public ApiRequest<User> signUp(
             User userData,
+            PasswordSecurity questions,
             ApiResponse.Listener<User> resListener,
             Response.ErrorListener errorListener
     ) {
@@ -115,12 +118,14 @@ public class Fat2FitApi {
         JSONObject body = new JSONObject();
 
         try {
-            // TODO: Some validation before sending data
-            // TODO: Improve RequestHelper.toJson method
             body.put("email", userData.getEmail());
             body.put("password", userData.getPassword());
             body.put("firstName", userData.getFirstName());
             body.put("lastName", userData.getLastName());
+            body.put("question1", questions.question1);
+            body.put("question2", questions.question2);
+            body.put("answer1", questions.answer1);
+            body.put("answer2", questions.answer2);
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -174,6 +179,75 @@ public class Fat2FitApi {
         return request;
     }
 
+    public ApiRequest<PasswordSecurity> getQuestions(
+            String email,
+            ApiResponse.Listener<PasswordSecurity> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/account/questions" + ("?email=" + email);
+        ApiRequest<PasswordSecurity> request = ApiRequest.get(
+                PasswordSecurity.class, endpoint,
+                headers, resListener, errorListener);
+
+        RequestHelper.addToRequestQueue(request);
+        return request;
+    }
+
+    public ApiRequest<String> answerQuestions(
+            String email, PasswordSecurity answers,
+            ApiResponse.Listener<String> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/account/questions";
+        JSONObject body = new JSONObject();
+        try {
+            body.put("email", email);
+            body.put("answer1", answers.answer1);
+            body.put("answer2", answers.answer2);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        ApiRequest<String> request = ApiRequest.post(
+                String.class, endpoint, headers,
+                body, resListener, errorListener);
+
+        RequestHelper.addToRequestQueue(request);
+        return request;
+    }
+
+    public ApiRequest<User> resetPassword(
+            String resetToken, String newPassword,
+            ApiResponse.Listener<User> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/account/passreset";
+        JSONObject body = new JSONObject();
+
+        try {
+            body.put("password", newPassword);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        headers.put(AUTH_HEADER, BEARER_PREFIX + resetToken);
+        ApiResponse.Listener<User> resWrapper = res -> {
+            headers.remove(AUTH_HEADER);
+            resListener.onResponse(res);
+        };
+        Response.ErrorListener errWrapper = err -> {
+            headers.remove(AUTH_HEADER);
+            errorListener.onErrorResponse(err);
+        };
+        ApiRequest<User> request = ApiRequest.post(
+                User.class, endpoint, headers,
+                body, resWrapper, errWrapper);
+
+        RequestHelper.addToRequestQueue(request);
+        return request;
+    }
+
     //--------------------------------------------------
 
     public ApiRequest<Group> createGroup(
@@ -192,9 +266,8 @@ public class Fat2FitApi {
         }
 
         ApiRequest<Group> request = ApiRequest.post(
-                Group.class, endpoint,
-                headers, body,
-                resListener, errorListener);
+                Group.class, endpoint, headers,
+                body, resListener, errorListener);
 
         RequestHelper.addToRequestQueue(request);
         return request;
@@ -208,9 +281,8 @@ public class Fat2FitApi {
         final String endpoint = API_URL + "/group/join/" + groupId;
 
         ApiRequest<Group> request = ApiRequest.put(
-                Group.class, endpoint,
-                headers, EMPTY_JSON,
-                resListener, errorListener);
+                Group.class, endpoint, headers,
+                EMPTY_JSON, resListener, errorListener);
 
         RequestHelper.addToRequestQueue(request);
         return request;
@@ -224,9 +296,8 @@ public class Fat2FitApi {
         final String endpoint = API_URL + "/group/leave/" + groupId;
 
         ApiRequest<String> request = ApiRequest.put(
-                String.class, endpoint,
-                headers, EMPTY_JSON,
-                resListener, errorListener);
+                String.class, endpoint, headers,
+                EMPTY_JSON, resListener, errorListener);
 
         RequestHelper.addToRequestQueue(request);
         return request;
@@ -256,7 +327,6 @@ public class Fat2FitApi {
     ) {
         final String endpoint = API_URL + "/group/" + groupId + "/activity/create";
         JSONObject body = new JSONObject();
-
         try {
             body.put("title", title);
             body.put("description", description);
@@ -269,13 +339,36 @@ public class Fat2FitApi {
         }
 
         ApiRequest<GroupActivity> request = ApiRequest.post(
-                GroupActivity.class, endpoint,
-                headers, body,
-                resListener, errorListener);
+                GroupActivity.class, endpoint, headers,
+                body, resListener, errorListener);
 
         RequestHelper.addToRequestQueue(request);
         return request;
     }
 
+    //--------------------------------------------------
+
+    public ApiRequest<User> adminUpdateUser(
+            User data,
+            ApiResponse.Listener<User> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String _id = data.get_id();
+        if (_id == null || _id.isEmpty()) {
+            Log.e("AdminUpdateUser","Id is null or empty");
+            return null;
+        }
+        final String endpoint = API_URL + "/admin/user/" + _id;
+        JSONObject body = new JSONObject();
+
+        // TODO: Finish Admin update user
+        Log.w("AdminUpdateUser", "Currently not finished");
+
+        ApiRequest<User> request = ApiRequest.post(
+                User.class, endpoint, headers,
+                body, resListener, errorListener);
+        RequestHelper.addToRequestQueue(request);
+        return request;
+    }
 }
 
