@@ -20,7 +20,7 @@
             android:textColor="@color/colorBlack" />
 
         <EditText
-            android:id="@+id/searchEditText"
+            android:id="@+id/heightText"
             android:layout_width="335dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"

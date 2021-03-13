@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
         email = emailEditText.getText().toString();
         password = passwordEditText.getText().toString();
+
         api.login(email, password, res -> {
             User user = res.getData().getUser();
             char role = user.getRole();
