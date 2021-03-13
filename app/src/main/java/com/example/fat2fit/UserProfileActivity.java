@@ -3,6 +3,7 @@ package com.example.fat2fit;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import com.example.fat2fit.api.Fat2FitApi;
 import com.example.fat2fit.models.User;
@@ -28,7 +29,7 @@ public class UserProfileActivity extends AppCompatActivity {
         api = Fat2FitApi.getInstance(this);
     }
     //Todo: Functions need to be implemented for values in the UI and on click actions.
-    public void submit()
+    public void submit(View view)
     {
        heightEditText = findViewById(R.id.heightText);
        waistEditText = findViewById(R.id.editWaistText);
