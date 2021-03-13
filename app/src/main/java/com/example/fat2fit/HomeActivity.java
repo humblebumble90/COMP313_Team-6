@@ -34,5 +34,8 @@ public class HomeActivity extends AppCompatActivity {
     public void customerRep(View view)
     {
         startActivity(new Intent(HomeActivity.this, CustomerRepChallengesActivity.class));
+    public void joinGroup(View view)
+    {
+        startActivity(new Intent(HomeActivity.this, Join_LeaveGroupActivity.class));
     }
 }

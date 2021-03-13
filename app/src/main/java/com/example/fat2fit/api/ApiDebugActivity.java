@@ -16,8 +16,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Date;
-
 public class ApiDebugActivity extends AppCompatActivity {
 
     private TextView textView;
@@ -40,7 +38,7 @@ public class ApiDebugActivity extends AppCompatActivity {
     }
 
     public void onDebugButtonPress(View v) {
-        testGetUserInfo();
+        testGetRecommendedWorkouts();
     }
 
     private void testGetUserInfo() {
@@ -66,6 +64,28 @@ public class ApiDebugActivity extends AppCompatActivity {
                     "\nHyperlink: " + act.getHyperlink() +
                     "\nCreated: " + act.getCreated();
             setSuccessText(text);
+        }, stdErrListener);
+    }
+
+    private void getGroup() {
+        String groupId = "SR7HZU";
+        api.getGroup(groupId, res -> {
+            Group group = res.getData();
+            StringBuilder sb = new StringBuilder();
+            //sb.append();
+
+        }, stdErrListener);
+    }
+
+    private void testGetRecommendedWorkouts() {
+        api.getRecommendedWorkouts(res -> {
+            GroupActivity[] workouts = res.getData();
+            StringBuilder sb = new StringBuilder();
+            for (GroupActivity w : workouts) {
+                sb.append(w.getTitle()).append(" (");
+                sb.append(w.getHyperlink()).append(")\n");
+            }
+            setSuccessText(sb.toString());
         }, stdErrListener);
     }
 
