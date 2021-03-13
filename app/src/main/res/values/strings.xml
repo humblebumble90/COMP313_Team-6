@@ -56,4 +56,11 @@
     <string name="forgot_password">FORGOT PASSWORD</string>
     <string name="next_button">NEXT</string>
 
+
+    <string name="groupCode_plainText">Group Code</string>
+    <string name="groupCode_textview">Enter Group Code</string>
+    <string name="joinGroup_button">Join Group</string>
+    <string name="leaveGroup_button">Leave Group</string>
+
+
 </resources>
