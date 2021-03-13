@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     public void forgotPassword(View view)
     {
         System.out.println("forgotPassword button pushed");
-        //startActivity(new Intent(getApplicationContext(),ForgotPasswordActivity.class));
+        startActivity(new Intent(getApplicationContext(),ForgotPasswordActivity.class));
     }
 
     public void skip(View view)

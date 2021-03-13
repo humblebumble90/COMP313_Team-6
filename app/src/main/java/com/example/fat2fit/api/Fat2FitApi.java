@@ -16,7 +16,6 @@ import com.example.fat2fit.models.UserToken;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -342,6 +341,33 @@ public class Fat2FitApi {
                 GroupActivity.class, endpoint, headers,
                 body, resListener, errorListener);
 
+        RequestHelper.addToRequestQueue(request);
+        return request;
+    }
+
+    //--------------------------------------------------
+
+    public ApiRequest<Group> getRecommendedWorkouts(
+            ApiResponse.Listener<GroupActivity[]> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/workout/recommended";
+
+        // NOTE: Gson does not handle Generic arrays too well. To get around this issue,
+        // we decided to wrap the response in a 'Group' object, that way we'd have access to
+        // the 'activities' which can then be casted to 'Workout'
+
+        ApiResponse.Listener<Group> wrapper = res -> {
+            Group group = res.getData();
+            ApiResponse<GroupActivity[]> trueResponse = new ApiResponse<>();
+            trueResponse.setMeta(res.getMeta());
+            trueResponse.setData(group.getActivities());
+            resListener.onResponse(trueResponse);
+        };
+
+        ApiRequest<Group> request = ApiRequest.get(
+                Group.class, endpoint, headers,
+                wrapper, errorListener);
         RequestHelper.addToRequestQueue(request);
         return request;
     }

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.fat2fit.api.ApiDebugActivity;
+import com.example.fat2fit.api.ApiResponse;
 import com.example.fat2fit.api.Fat2FitApi;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Button launchBtn = (Button) findViewById(R.id.loginBtn);
         launchBtn.setOnClickListener (new View.OnClickListener(){
             public void onClick(View v){
+                // startActivity(new Intent(getApplicationContext(), ApiDebugActivity.class));
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
