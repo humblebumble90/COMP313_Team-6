@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     public void resetNext(View view){
         //TODO
-        setContentView(R.layout.activity_forgot_password_two);
+        //setContentView(R.layout.activity_forgot_password_two);
+        startActivity(new Intent(getApplicationContext(),ForgotPasswordTwoActivity.class));
+
 
     }
 }

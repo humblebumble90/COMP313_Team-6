@@ -18,6 +18,8 @@
         <activity android:name=".WorkoutDetailsActivity" />
         <activity android:name=".api.ApiDebugActivity" />
         <activity android:name=".WorkoutDetailsActivity"></activity>
+        <activity android:name=".ForgotPasswordTwoActivity"/>
+        <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".AdminActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RecommendedWorkoutActivity" />
