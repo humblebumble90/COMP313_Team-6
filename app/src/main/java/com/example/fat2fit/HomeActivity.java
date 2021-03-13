@@ -31,9 +31,10 @@ public class HomeActivity extends AppCompatActivity {
         System.out.println("user profile button pushed");
         //startActivity(new Intent(HomeActivity.this, UserProfileActivity.class));
     }
-    public void customerRep(View view)
-    {
+    public void customerRep(View view) {
         startActivity(new Intent(HomeActivity.this, CustomerRepChallengesActivity.class));
+
+    }
     public void joinGroup(View view)
     {
         startActivity(new Intent(HomeActivity.this, Join_LeaveGroupActivity.class));
