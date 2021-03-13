@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     {
         //for somereason moving to the userprofile activity crashes the app
         System.out.println("user profile button pushed");
-        //startActivity(new Intent(HomeActivity.this, UserProfileActivity.class));
+        startActivity(new Intent(HomeActivity.this, UserProfileActivity.class));
     }
     public void customerRep(View view) {
         startActivity(new Intent(HomeActivity.this, CustomerRepChallengesActivity.class));
