@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fat2Fit">
-        <activity android:name=".WorkoutDetailsActivity"></activity>
+        <activity android:name=".CustomerRedEditChallengeActivity"></activity>
+        <activity android:name=".CustomerRepAddChallengeActivity" />
+        <activity android:name=".CustomerRepChallengesActivity" />
+        <activity android:name=".WorkoutDetailsActivity" />
         <activity android:name=".AdminActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RecommendedWorkoutActivity" />
