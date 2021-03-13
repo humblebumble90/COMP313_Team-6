@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fat2Fit">
+        <activity android:name=".api.ApiDebugActivity" />
         <activity android:name=".WorkoutDetailsActivity"></activity>
         <activity android:name=".AdminActivity" />
         <activity android:name=".LoginActivity" />
