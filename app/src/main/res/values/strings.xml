@@ -56,6 +56,33 @@
     <string name="forgot_password">FORGOT PASSWORD</string>
     <string name="next_button">NEXT</string>
 
+    <string name="create_group">Create Group</string>
+    <string name="group_creation">"Choose What Name Your Group Is Going To Be"</string>
+    <string name="group_ID">Your Group ID Is:</string>
+
+    <string name="fitness_type">Fitness Type:</string>
+    <string name="work_rate">Work Rate:</string>
+    <string name="instructions">Instructions:</string>
+    <string name="progress">Progress:</string>
+    <string name="recommended_workout">Recommended Workouts</string>
+    <string name="based_BMI_label">Based on Your BMI of:</string>
+    <string name="view_details">View Details</string>
+
+    <string name="challenge_name">Challenge Name</string>
+    <string name="accept_button">Accept</string>
+    <string name="decline_button">Decline</string>
+
+    <string name="return_button">Return to Home </string>
+    <string name="add_challenge_button">Add A Challenge</string>
+    <string name="challenge_label">Challenges Currently Being Run</string>
+    <string name="view_edit_label">Click on a challenge to view and edit details</string>
+
+    <string name="add_challenge_title">What are the details of this new challenge</string>
+    <string name="challenge_condition">Challenge Condition:</string>
+    <string name="challenge_remaining_days">Remaining Days:</string>
+    <string name="go_back_button">Go Back</string>
+
+    <string name="challenge_details_title">Details of the Challenge</string>
 
     <string name="groupCode_plainText">Group Code</string>
     <string name="groupCode_textview">Enter Group Code</string>
