@@ -20,5 +20,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     public void resetNext(View view){
         //TODO
-        }
+        setContentView(R.layout.activity_forgot_password_two);
+
+    }
 }
