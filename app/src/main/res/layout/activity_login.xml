@@ -51,7 +51,7 @@
         android:textColor="@color/colorGreen" />
 
     <EditText
-        android:id="@+id/editWaistText2"
+        android:id="@+id/passwordText"
         android:layout_width="335dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100px"
