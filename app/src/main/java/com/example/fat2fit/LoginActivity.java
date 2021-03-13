@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.fat2fit.api.Fat2FitApi;
 import com.example.fat2fit.models.User;
 
 public class LoginActivity extends AppCompatActivity {
-    private String email;
-    private String password;
+    private EditText emailEditText;
+    private EditText passwordEditText;
+    String email;
+    String password;
     Fat2FitApi api;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +27,11 @@ public class LoginActivity extends AppCompatActivity {
 
         public void login(View view)
     {
-        email = findViewById(R.id.usernameText).toString();
-        password = findViewById((R.id.passwordText)).toString();
+        emailEditText = findViewById(R.id.usernameText);
+        passwordEditText = findViewById(R.id.passwordText);
+
+        email = emailEditText.getText().toString();
+        password = passwordEditText.getText().toString();
         api.login(email, password, res -> {
             User user = res.getData().getUser();
             char role = user.getRole();
@@ -42,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }, err -> {
             // Handles unsuccessful login
-            Toast.makeText(this, "Login is not properly proceeded for missed username, password, or other factors.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Login is not properly proceeded for missed username, password, or other factors.", Toast.LENGTH_SHORT).show();
         });
     }
 
