@@ -8,12 +8,12 @@
     tools:context=".AdminActivity">
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/roleLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="200dp"
-        android:text="TextView"
+        android:text="Role:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/roleTextView" />
 
