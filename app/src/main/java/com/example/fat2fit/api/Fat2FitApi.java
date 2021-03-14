@@ -375,20 +375,24 @@ public class Fat2FitApi {
     //--------------------------------------------------
 
     public ApiRequest<User> adminUpdateUser(
-            User data,
+            User original, User changes,
             ApiResponse.Listener<User> resListener,
             Response.ErrorListener errorListener
     ) {
-        final String _id = data.get_id();
+        final String _id = original.get_id();
         if (_id == null || _id.isEmpty()) {
             Log.e("AdminUpdateUser","Id is null or empty");
             return null;
         }
         final String endpoint = API_URL + "/admin/user/" + _id;
-        JSONObject body = new JSONObject();
+        JSONObject body;
 
-        // TODO: Finish Admin update user
-        Log.w("AdminUpdateUser", "Currently not finished");
+        try {
+            body = User.differences(original, changes);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
 
         ApiRequest<User> request = ApiRequest.post(
                 User.class, endpoint, headers,

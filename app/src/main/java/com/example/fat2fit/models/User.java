@@ -1,5 +1,8 @@
 package com.example.fat2fit.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class User {
     public interface Roles {
         char END_USER = 'U';
@@ -101,5 +104,31 @@ public class User {
     }
     public void setFreq(int freq) {
         this.freq = freq;
+    }
+
+    public static JSONObject differences(User original, User updated) throws JSONException {
+        JSONObject json = new JSONObject();
+        if (!original.email.equals(updated.email))
+            json.put("email", updated.email);
+        if (!original.firstName.equals(updated.firstName))
+            json.put("firstName", updated.firstName);
+        if (!original.lastName.equals(updated.lastName))
+            json.put("lastName", updated.lastName);
+        if (!original.password.equals(updated.password))
+            json.put("password", updated.password);
+        if (original.role != updated.role)
+            json.put("role", updated.role);
+        if (original.pushupScore != updated.pushupScore)
+            json.put("pushupScore", updated.pushupScore);
+        if (original.situpScore != updated.situpScore)
+            json.put("situpScore", updated.situpScore);
+        if (original.freq != updated.freq)
+            json.put("freq", updated.freq);
+        if (original.height != updated.height)
+            json.put("height", updated.height);
+        if (original.waist != updated.waist)
+            json.put("waist", updated.waist);
+
+        return json;
     }
 }
