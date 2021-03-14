@@ -16,6 +16,7 @@
         <activity android:name=".tests.TestAdminActivity"></activity>
         <activity android:name=".tests.TestLoginActivity" />
         <activity android:name=".tests.TestCreateGroupActivity" />
+        <activity android:name=".tests.TestPassResetActivity"/>
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".CreateActivity" />
         <activity android:name=".CustomerRedEditChallengeActivity" />
