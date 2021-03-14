@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fat2Fit">
-        <activity android:name=".tests.TestLoginActivity"></activity>
+        <activity android:name=".tests.TestFitnessDataActivity" />
+        <activity android:name=".tests.TestAdminActivity"></activity>
+        <activity android:name=".tests.TestLoginActivity" />
+        <activity android:name=".tests.TestCreateGroupActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".CreateActivity" />
         <activity android:name=".CustomerRedEditChallengeActivity" />
