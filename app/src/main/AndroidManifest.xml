@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fat2Fit">
         <activity android:name=".TestNavActivity"/>
+        <activity android:name=".tests.TestAdminActivity2_Searching"></activity>
         <activity android:name=".tests.TestFitnessDataActivity" />
         <activity android:name=".tests.TestAdminActivity" />
         <activity android:name=".tests.TestLoginActivity" />

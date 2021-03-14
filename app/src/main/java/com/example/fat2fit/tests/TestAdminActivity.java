@@ -2,8 +2,10 @@ package com.example.fat2fit.tests;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,18 +13,23 @@ import com.example.fat2fit.R;
 import com.android.volley.Response;
 import com.example.fat2fit.api.ApiResponse;
 import com.example.fat2fit.api.Fat2FitApi;
+import com.example.fat2fit.api.RequestHelper;
 import com.example.fat2fit.models.User;
 import com.example.fat2fit.models.UserToken;
 
 public class TestAdminActivity extends AppCompatActivity {
     Fat2FitApi api;
     User originUser, updatedUser;
+    private TextView testTextView;
+    private Button testButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_admin2);
         api = Fat2FitApi.getInstance(this);
+        testTextView = findViewById(R.id.testTextView);
+        testButton = findViewById(R.id.testButton);
     }
 
     public void onTestButtonPressed(View v) {
@@ -58,7 +65,7 @@ public class TestAdminActivity extends AppCompatActivity {
         updatedUser.setFirstName("UpdatedJohn");
         updatedUser.setLastName("Updated Doe");
 
-        api.login("amin@email.com","Password#123$", res ->
+        api.login("admin@email.com","Password#123$", res ->
                 {
                     api.adminUpdateUser(originUser, updatedUser,
                             response->
@@ -97,7 +104,7 @@ public class TestAdminActivity extends AppCompatActivity {
         updatedUser.setFirstName("Updated Mia");
         updatedUser.setLastName("Updated Kim");
 
-        api.login("amin@email.com","Password#123$", res ->
+        api.login("admin@email.com","Password#123$", res ->
                 {
                     api.adminUpdateUser(originUser, updatedUser,
                             response->
@@ -136,7 +143,7 @@ public class TestAdminActivity extends AppCompatActivity {
         updatedUser.set_id(originUser.get_id());
         updatedUser.setEmail("updated@email.com");
 
-        api.login("amin@email.com","Password#123$", res ->
+        api.login("admin@email.com","Password#123$", res ->
                 {
                     api.adminUpdateUser(originUser, updatedUser,
                             response->
@@ -177,9 +184,22 @@ public class TestAdminActivity extends AppCompatActivity {
         api.adminUpdateUser(originUser, updatedUser, res ->
         {
             originUser = res.getData();
+            setSuccessText(String.format(
+                    "SUCCESS\nfirstName: %s\nlastName: %s",
+                    originUser.getFirstName(), originUser.getLastName()));
         }, err ->
         {
-            Toast.makeText(getApplicationContext(), err.getMessage(), Toast.LENGTH_SHORT).show();
+            setErrorText(err.getMessage());
         });
+    }
+
+    private void setSuccessText(String text) {
+        testTextView.setTextColor(Color.rgb(0, 128, 0));
+        testTextView.setText(text);
+    }
+
+    private void setErrorText(String text) {
+        testTextView.setTextColor(Color.RED);
+        testTextView.setText(text);
     }
 }
