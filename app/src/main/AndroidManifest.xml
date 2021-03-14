@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fat2Fit">
+        <activity android:name=".tests.TestLoginActivity"></activity>
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".CreateActivity" />
         <activity android:name=".CustomerRedEditChallengeActivity" />
