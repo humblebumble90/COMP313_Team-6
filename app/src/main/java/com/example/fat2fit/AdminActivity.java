@@ -102,7 +102,7 @@ public class AdminActivity extends AppCompatActivity {
 
     public void update(View view)
     {
-        User user = new User();
+        User user = targetUser;
         fname = editTextFirstname.getText().toString();
         user.setFirstName(fname);
         lname = editTextLastname.getText().toString();
