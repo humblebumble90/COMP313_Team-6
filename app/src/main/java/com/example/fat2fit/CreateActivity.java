@@ -16,11 +16,14 @@ public class CreateActivity extends AppCompatActivity {
     private String title, description, hyperlink, groupIdentify;
     private EditText groupTitleText, groupDescText, groupHyperLinkText, groupId;
 
+    private Fat2FitApi api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+
+        api = Fat2FitApi.getInstance(this);
 
         groupTitleText = (EditText) findViewById(R.id.groupTitleText);
         groupDescText = (EditText) findViewById(R.id.groupDescText);
@@ -30,9 +33,24 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     public void createActivity(View view) {
-        //TODO
-        //setContentView(R.layout.activity_home);
-        Toast.makeText(this, "Activity created!", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(CreateActivity.this, HomeActivity.class));
+
+        String id = groupId.getText().toString();
+        String title = groupTitleText.getText().toString();
+        String desc = groupDescText.getText().toString();
+        String hyperlink = groupHyperLinkText.getText().toString();
+
+        api.createGroupActivity(id, title, desc, hyperlink, res -> {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Successfully created group activity",
+                    Toast.LENGTH_LONG).show();
+            finish();
+            //startActivity(new Intent(CreateActivity.this, HomeActivity.class));
+        }, err -> {
+            Toast.makeText(
+                    getApplicationContext(),
+                    err.getMessage(),
+                    Toast.LENGTH_LONG).show();
+        });
     }
 }
