@@ -59,10 +59,10 @@ public class TestLoginActivity extends AppCompatActivity {
             UserToken ut = res.getData();
             User user = ut.getUser();
             if (user.getEmail().equals(email)) {
-                setErrorText("Failed test 1");
+                setErrorText("Failed test 2");
             }
         }, err -> {
-            setSuccessText("Passed test 1");
+            setSuccessText("Passed test 2\n" + err.getMessage());
         });
     }
 
@@ -71,6 +71,18 @@ public class TestLoginActivity extends AppCompatActivity {
      * No Credentials
      */
     private void test3() {
+        String email = "";
+        String password = "";
+
+        api.login(email, password, res -> {
+            UserToken ut = res.getData();
+            User user = ut.getUser();
+            if (user.getEmail().equals(email)) {
+                setErrorText("Failed test 3");
+            }
+        }, err -> {
+            setSuccessText("Passed test 3\n" + err.getMessage());
+        });
     }
 
 
