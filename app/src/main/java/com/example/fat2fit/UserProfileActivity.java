@@ -31,7 +31,7 @@ public class UserProfileActivity extends AppCompatActivity {
     //Todo: Functions need to be implemented for values in the UI and on click actions.
     public void submit(View view)
     {
-       heightEditText = findViewById(R.id.heightText);
+       heightEditText = findViewById(R.id.EditTextUsername);
        waistEditText = findViewById(R.id.editWaistText);
        situpEditText = findViewById(R.id.situpEditText);
        freqEditText = findViewById(R.id.frequencyEditText);

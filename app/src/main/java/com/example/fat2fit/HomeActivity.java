@@ -51,4 +51,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), CreateActivity.class));
     }
 
+    public void TestAdminView(View view)
+    {
+        startActivity(new Intent(getApplicationContext(), AdminActivity.class));
+    }
+
 }

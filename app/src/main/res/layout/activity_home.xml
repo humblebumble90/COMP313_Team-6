@@ -96,4 +96,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.683" />
 
+    <Button
+        android:id="@+id/TestAdminViewBtn"
+        android:layout_width="164dp"
+        android:layout_height="49dp"
+        android:onClick="TestAdminView"
+        android:text="TestAdminView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCreateActivity"
+        app:layout_constraintVertical_bias="0.197" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
