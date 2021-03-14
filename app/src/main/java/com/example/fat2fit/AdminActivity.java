@@ -121,11 +121,12 @@ public class AdminActivity extends AppCompatActivity {
             api.adminUpdateUser(targetUser, user,
                     res->
                     {
-                        res.setData(user);
+                        targetUser = res.getData();
                     },
                     err ->
                     {
                         //error
+                        Toast.makeText(getApplicationContext(), err.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                     );
         }
@@ -133,7 +134,6 @@ public class AdminActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "No user found yet for updating", Toast.LENGTH_SHORT).show();
         }
-
     }
 
 
