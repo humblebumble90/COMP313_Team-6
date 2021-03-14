@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }, err -> {
             // Handles unsuccessful login
-            //Toast.makeText(this, "Login is not properly proceeded for missed username, password, or other factors.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Login is not properly proceeded for missed username, password, or other factors.", Toast.LENGTH_SHORT).show();
         });
     }
 
