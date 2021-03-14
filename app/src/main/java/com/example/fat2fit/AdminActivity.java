@@ -102,16 +102,16 @@ public class AdminActivity extends AppCompatActivity {
 
     public void update(View view)
     {
-//        editTextId = findViewById(R.id.userIDTextView);
-//        editTextEmail = findViewById(R.id.emailTextView);
-//        editTextFirstname = findViewById(R.id.firstnameTextView);
-//        editTextLastname = findViewById(R.id.lastnameTextView);
-//        editTextRole = findViewById(R.id.roleTextView);
-//        editTextHeight = findViewById(R.id.heightTextView);
-//        editTextWaist = findViewById(R.id.waistTextView);
-//        editTextPushupScore = findViewById(R.id.pushupScoreTextView);
-//        editTextSitupScore = findViewById(R.id.situpScoreTextView);
-//        editTextFreq = findViewById(R.id.freqTextView);
+        editTextId = findViewById(R.id.userIDTextView);
+        editTextEmail = findViewById(R.id.emailTextView);
+        editTextFirstname = findViewById(R.id.firstnameTextView);
+        editTextLastname = findViewById(R.id.lastnameTextView);
+        editTextRole = findViewById(R.id.roleTextView);
+        editTextHeight = findViewById(R.id.heightTextView);
+        editTextWaist = findViewById(R.id.waistTextView);
+        editTextPushupScore = findViewById(R.id.pushupScoreTextView);
+        editTextSitupScore = findViewById(R.id.situpScoreTextView);
+        editTextFreq = findViewById(R.id.freqTextView);
 //
         User user = targetUser;
         fname = editTextFirstname.getText().toString();
