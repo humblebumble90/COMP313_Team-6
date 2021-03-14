@@ -1,4 +1,4 @@
-package com.example.fat2fit;
+package com.example.fat2fit.tests;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.fat2fit.R;
 
 import com.android.volley.Response;
 import com.example.fat2fit.api.ApiResponse;
