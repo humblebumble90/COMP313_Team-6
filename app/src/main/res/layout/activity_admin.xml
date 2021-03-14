@@ -50,18 +50,107 @@
         android:textColor="@android:color/white"
         android:textSize="12sp" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="220dp"
-        android:fillViewport="true"
+    <TextView
+        android:id="@+id/lastnameTextView"
+        android:layout_width="79dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="323dp"
+        android:text="Last name:" />
 
-        >
+    <TextView
+        android:id="@+id/firstnameTextView"
+        android:layout_width="79dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="281dp"
+        android:text="First name:" />
 
-        <ListView
-            android:id="@+id/workout_user_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </ScrollView>
+    <TextView
+        android:id="@+id/userIDTextView"
+        android:layout_width="79dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="246dp"
+        android:text="ID: " />
+
+    <TextView
+        android:id="@+id/roleTextView"
+        android:layout_width="79dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="361dp"
+        android:text="Role:" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="79dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="387dp"
+        android:text="Email:" />
+
+    <TextView
+        android:id="@+id/heightTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="156dp"
+        android:text="Height:" />
+
+    <TextView
+        android:id="@+id/waistTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="282dp"
+        android:layout_marginEnd="110dp"
+        android:text="waistTextView" />
+
+    <TextView
+        android:id="@+id/pushupScoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="321dp"
+        android:layout_marginEnd="121dp"
+        android:text="PushupScore:" />
+
+    <TextView
+        android:id="@+id/situpScoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="359dp"
+        android:layout_marginEnd="135dp"
+        android:text="SitupScore:" />
+
+    <TextView
+        android:id="@+id/freqTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="390dp"
+        android:layout_marginEnd="137dp"
+        android:text="Frequency:" />
 
 </RelativeLayout>
