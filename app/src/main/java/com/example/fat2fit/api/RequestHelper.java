@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class RequestHelper {
@@ -57,6 +58,10 @@ public class RequestHelper {
     }
 
     static <T> T fromJson(JSONObject json, Class<T> class0) {
+        return fromJson(json.toString(), class0);
+    }
+
+    static <T> T fromJson(JSONArray json, Class<T> class0) {
         return fromJson(json.toString(), class0);
     }
 
