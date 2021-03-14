@@ -5,6 +5,7 @@ import android.util.Log;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,7 +57,10 @@ public class ApiResponse<T> {
 
             if (res.isOK()) {
                 if (class0 == String.class) {
-                    res.setData((F)json.getString("data"));
+                    res.setData((F) json.getString("data"));
+                } else if (class0.isArray()) {
+                    JSONArray data = json.getJSONArray("data");
+                    res.setData(RequestHelper.fromJson(data, class0));
                 } else {
                     Log.d("JSON_OBJECT", "" + json);
                     JSONObject data = json.getJSONObject("data");

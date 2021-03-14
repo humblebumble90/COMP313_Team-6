@@ -38,7 +38,7 @@ public class ApiDebugActivity extends AppCompatActivity {
     }
 
     public void onDebugButtonPress(View v) {
-        getGroup();
+        testSearch();
     }
 
     private void testGetUserInfo() {
@@ -48,6 +48,23 @@ public class ApiDebugActivity extends AppCompatActivity {
                 Toast.makeText(this, "End user!", Toast.LENGTH_LONG).show();
             }
             setSuccessText(RequestHelper.toJson(user));
+        }, stdErrListener);
+    }
+
+    private void testSearch() {
+        api.login("admin@email.com", "Password#123$", r -> {
+            String term = "brenton@email.com";
+            api.adminSearchUser(term, res -> {
+                User[] users = res.getData();
+                StringBuilder sb = new StringBuilder();
+                sb.append(String.format("%s (Count: %s)\n", res.getMeta().getMsg(), users.length));
+                for (User m : users) {
+                    String text = String.format("\n[%s] %s %s (%s)\n",
+                            m.get_id(), m.getFirstName(), m.getLastName(), m.getEmail());
+                    sb.append(text);
+                }
+                setSuccessText(sb.toString());
+            }, stdErrListener);
         }, stdErrListener);
     }
 
