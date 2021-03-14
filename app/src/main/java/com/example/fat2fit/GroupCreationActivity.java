@@ -39,11 +39,14 @@ public class GroupCreationActivity extends AppCompatActivity {
                     group.getName(),
                     group.getCoach().getEmail());
             //setSuccessText(text);
+            startActivity(new Intent(GroupCreationActivity.this, HomeActivity.class));
         }, err -> {
             // Unsuccessful
+            Toast.makeText(
+                    getApplicationContext(),
+                    err.getMessage(),
+                    Toast.LENGTH_SHORT).show();
         });
-
-        startActivity(new Intent(GroupCreationActivity.this, HomeActivity.class));
 
         //OLD Stuff CLEANUP LATER
         //EditText groupName = findViewById(R.id.groupName);
