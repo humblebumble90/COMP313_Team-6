@@ -12,11 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fat2Fit">
+        <activity android:name=".tests.TestAdminActivity2_Searching"></activity>
         <activity android:name=".tests.TestFitnessDataActivity" />
-        <activity android:name=".tests.TestAdminActivity"></activity>
+        <activity android:name=".tests.TestAdminActivity" />
         <activity android:name=".tests.TestLoginActivity" />
         <activity android:name=".tests.TestCreateGroupActivity" />
-        <activity android:name=".tests.TestPassResetActivity"/>
+        <activity android:name=".tests.TestPassResetActivity" />
         <activity android:name=".tests.TestCreateGroupActivitiesActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".CreateActivity" />
