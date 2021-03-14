@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fat2fit.R;
@@ -22,6 +23,19 @@ public class TestAdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_admin2);
         api = Fat2FitApi.getInstance(this);
+    }
+
+    public void onTestButtonPressed(View v) {
+        TextView testNum = findViewById(R.id.testNumber);
+        int num = Integer.parseInt(testNum.getText().toString());
+        switch (num){
+            case 1: Test1(); return;
+            case 2: Test2(); return;
+            case 3: Test3(); return;
+            case 4: Test4(); return;
+            default: //setErrorText("Incorrect Test Number");
+                return;
+        }
     }
 
     //Story: As an administrator, I can modify a user's personal data as the user may request

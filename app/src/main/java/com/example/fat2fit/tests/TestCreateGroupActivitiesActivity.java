@@ -32,6 +32,15 @@ public class TestCreateGroupActivitiesActivity extends AppCompatActivity {
     }
 
     public void onTestButtonPressed(View v) {
+        TextView testNum = findViewById(R.id.testNumber);
+        int num = Integer.parseInt(testNum.getText().toString());
+        switch (num){
+            case 1: test1(); return;
+            case 2: test2(); return;
+            case 3: test3(); return;
+            case 4: test4(); return;
+            default: setErrorText("Incorrect Test Number"); return;
+        }
     }
 
     /**

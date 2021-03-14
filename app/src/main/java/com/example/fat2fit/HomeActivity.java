@@ -55,5 +55,9 @@ public class HomeActivity extends AppCompatActivity {
     {
         startActivity(new Intent(getApplicationContext(), AdminActivity.class));
     }
+    public void UnitTest(View view)
+    {
+        startActivity(new Intent(getApplicationContext(), TestNavActivity.class));
+    }
 
 }
