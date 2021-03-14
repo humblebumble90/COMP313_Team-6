@@ -34,7 +34,7 @@ public class UserProfileActivity extends AppCompatActivity {
     //Todo: Functions need to be implemented for values in the UI and on click actions.
     public void submit(View view)
     {
-        System.out.println("Nice");
+        System.out.println("Submit Button was pressed.");
        heightEditText = findViewById(R.id.heightText);
        waistEditText = findViewById(R.id.editWaistText);
        situpEditText = findViewById(R.id.situpEditText);
