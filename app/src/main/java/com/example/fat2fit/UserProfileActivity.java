@@ -12,11 +12,13 @@ public class UserProfileActivity extends AppCompatActivity {
     private EditText heightEditText;
     private EditText waistEditText;
     private EditText situpEditText;
+    private EditText pushupEditText;
     private EditText freqEditText;
 
     private int height;
     private int waist;
     private int situp;
+    private int pushup;
     private int freq;
     private User user;
 
@@ -27,24 +29,29 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         api = Fat2FitApi.getInstance(this);
+
     }
     //Todo: Functions need to be implemented for values in the UI and on click actions.
     public void submit(View view)
     {
-       heightEditText = findViewById(R.id.EditTextUsername);
+        System.out.println("Submit Button was pressed.");
+       heightEditText = findViewById(R.id.heightText);
        waistEditText = findViewById(R.id.editWaistText);
        situpEditText = findViewById(R.id.situpEditText);
+       pushupEditText = findViewById(R.id.editPushupText);
        freqEditText = findViewById(R.id.frequencyEditText);
 
        height = Integer.parseInt(heightEditText.getText().toString());
        waist = Integer.parseInt(waistEditText.getText().toString());
        situp = Integer.parseInt(situpEditText.getText().toString());
+       pushup = Integer.parseInt(freqEditText.getText().toString());
        freq = Integer.parseInt(freqEditText.getText().toString());
 
         user = new User();
         user.setHeight(height);
         user.setWaist(waist);
         user.setSitupScore(situp);
+        user.setPushupScore(pushup);
         user.setFreq(freq);
 
         api.sendFitData(user, res -> {
