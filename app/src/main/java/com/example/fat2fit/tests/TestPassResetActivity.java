@@ -47,8 +47,8 @@ public class TestPassResetActivity extends AppCompatActivity {
     private void test1() {
         String email = "test1@email.com";
         PasswordSecurity answers = new PasswordSecurity();
-        answers.answer1= "Correct1";
-        answers.answer2 = "Correct2";
+        answers.answer1= "bobby";
+        answers.answer2 = "moddy";
         String newPassword = "Password123$";
         api.answerQuestions(email,answers, res -> {
             String ut = res.getData();
