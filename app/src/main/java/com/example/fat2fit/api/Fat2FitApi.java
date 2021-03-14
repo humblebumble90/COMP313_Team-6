@@ -400,5 +400,29 @@ public class Fat2FitApi {
         RequestHelper.addToRequestQueue(request);
         return request;
     }
+
+    public ApiRequest<User[]> adminSearchUser(
+            String term,
+            ApiResponse.Listener<User[]> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/admin/search";
+        JSONObject body = new JSONObject();
+
+        try {
+            body.put("term", term);
+            body.put("email", term);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        ApiRequest<User[]> request = ApiRequest.post(
+                User[].class, endpoint, headers,
+                body, resListener, errorListener);
+        RequestHelper.addToRequestQueue(request);
+        return request;
+
+    }
 }
 
