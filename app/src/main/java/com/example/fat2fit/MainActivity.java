@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*when pressed will move the screen to a new activity */
+//        /*when pressed will move the screen to a new activity */
         Button launchBtn = (Button) findViewById(R.id.loginBtn);
         launchBtn.setOnClickListener (new View.OnClickListener(){
             public void onClick(View v){
