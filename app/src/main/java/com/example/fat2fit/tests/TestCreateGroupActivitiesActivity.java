@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fat2fit.R;
 import com.example.fat2fit.api.Fat2FitApi;
 import com.example.fat2fit.models.GroupActivity;
-import com.example.fat2fit.models.User;
-import com.example.fat2fit.models.UserToken;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -41,7 +39,7 @@ public class TestCreateGroupActivitiesActivity extends AppCompatActivity {
         final String groupId = "I8N1VN";
         final String title = "Title (test1)!";
         final String description = "Description (test1)!";
-        final String hyperlink = null;
+        final String hyperlink = "https://youtu.be/gC_L9qAHVJ8";
         api.createGroupActivity(groupId, title, description, hyperlink, res -> {
             GroupActivity act = res.getData();
             String text = "ID: " + act.get_id() +
@@ -62,7 +60,7 @@ public class TestCreateGroupActivitiesActivity extends AppCompatActivity {
         final String groupId = "I8N1VN";
         final String title = "title (test2)!";
         final String description = "Description (test2)!";
-        final String hyperlink = null;
+        final String hyperlink = "https://youtu.be/gC_L9qAHVJ8";
         api.createGroupActivity(groupId, title, description, hyperlink, res -> {
             GroupActivity act = res.getData();
             String text = "ID: " + act.get_id() +
@@ -105,7 +103,7 @@ public class TestCreateGroupActivitiesActivity extends AppCompatActivity {
         final String groupId = "82D9QK";
         final String title = "title (test4)!";
         final String description = "Description (test4)!";
-        final String hyperlink = null;
+        final String hyperlink = "https://youtu.be/gC_L9qAHVJ8";
         api.createGroupActivity(groupId, title, description, hyperlink, res -> {
             GroupActivity act = res.getData();
             String text = "ID: " + act.get_id() +
