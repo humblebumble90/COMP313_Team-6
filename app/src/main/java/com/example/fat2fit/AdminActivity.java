@@ -81,16 +81,16 @@ public class AdminActivity extends AppCompatActivity {
                         pScore = u.getPushupScore();
                         sScore = u.getSitupScore();
                         freq = u.getFreq();
-                        editTextId.setText("ID: " + id);
-                        editTextEmail.setText("Email: " + email);
-                        editTextFirstname.setText("Firstname: " + fname );
-                        editTextLastname.setText("Lastname: " + lname);
-                        editTextRole.setText("Role:" + role);
-                        editTextHeight.setText("Height: " + height);
-                        editTextWaist.setText("Waist: " + waist);
-                        editTextPushupScore.setText("Pushup Score: " + pScore);
-                        editTextSitupScore.setText("Situp Score: " + sScore);
-                        editTextFreq.setText("Freq: " + freq);
+                        editTextId.setText("" + id);
+                        editTextEmail.setText("" + email);
+                        editTextFirstname.setText("" + fname );
+                        editTextLastname.setText("" + lname);
+                        editTextRole.setText("" + role);
+                        editTextHeight.setText("" + height);
+                        editTextWaist.setText("" + waist);
+                        editTextPushupScore.setText("" + pScore);
+                        editTextSitupScore.setText("" + sScore);
+                        editTextFreq.setText("" + freq);
                     }
                 },
                 err -> {
