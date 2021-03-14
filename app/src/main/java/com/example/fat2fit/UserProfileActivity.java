@@ -35,7 +35,7 @@ public class UserProfileActivity extends AppCompatActivity {
     public void submit(View view)
     {
         System.out.println("Submit Button was pressed.");
-       heightEditText = findViewById(R.id.heightText);
+       heightEditText = findViewById(R.id.heightTextView);
        waistEditText = findViewById(R.id.editWaistText);
        situpEditText = findViewById(R.id.situpEditText);
        pushupEditText = findViewById(R.id.editPushupText);

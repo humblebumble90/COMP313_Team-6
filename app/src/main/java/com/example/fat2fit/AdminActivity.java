@@ -113,7 +113,9 @@ public class AdminActivity extends AppCompatActivity {
         editTextSitupScore = findViewById(R.id.situpScoreTextView);
         editTextFreq = findViewById(R.id.freqTextView);
 //
-        User user = targetUser;
+        User user = new User();
+        user.set_id(targetUser.get_id());
+        user.setEmail(targetUser.getEmail());
         fname = editTextFirstname.getText().toString();
         user.setFirstName(fname);
         lname = editTextLastname.getText().toString();
