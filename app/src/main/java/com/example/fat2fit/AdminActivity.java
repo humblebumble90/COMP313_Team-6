@@ -3,11 +3,14 @@ package com.example.fat2fit;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.example.fat2fit.api.ApiResponse;
 import com.example.fat2fit.api.Fat2FitApi;
 import com.example.fat2fit.models.User;
 
@@ -18,14 +21,26 @@ public class AdminActivity extends AppCompatActivity {
     String username;
     TextView editTextId;
     TextView editTextEmail;
-    TextView editTextFirstname;
-    TextView editTextLastname;
-    TextView editTextRole;
-    TextView editTextHeight;
-    TextView editTextWaist;
-    TextView editTextPushupScore;
-    TextView editTextSitupScore;
-    TextView editTextFreq;
+    EditText editTextFirstname;
+    EditText editTextLastname;
+    EditText editTextRole;
+    EditText editTextHeight;
+    EditText editTextWaist;
+    EditText editTextPushupScore;
+    EditText editTextSitupScore;
+    EditText editTextFreq;
+
+    User targetUser;
+    String id;
+    String email;
+    String fname;
+    String lname;
+    char role;
+    float height;
+    float waist;
+    int pScore;
+    int sScore;
+    int freq;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,16 +70,27 @@ public class AdminActivity extends AppCompatActivity {
                     User[] users = res.getData(); // found users that match
                     for(User u : users)
                     {
-                        editTextId.setText("ID: " + u.get_id());
-                        editTextEmail.setText("Email: " + u.getEmail());
-                        editTextFirstname.setText("Firstname: " + u.getFirstName() );
-                        editTextLastname.setText("Lastname: " + u.getLastName());
-                        editTextRole.setText("Role:" + u.getRole());
-                        editTextHeight.setText("Height: " + u.getHeight());
-                        editTextWaist.setText("Waist: " + u.getWaist());
-                        editTextPushupScore.setText("Pushup Score: " + u.getPushupScore());
-                        editTextSitupScore.setText("Situp Score: " + u.getSitupScore());
-                        editTextFreq.setText("Freq: " + u.getFreq());
+                        targetUser = u;
+                        id = u.get_id();
+                        email = u.getEmail();
+                        fname = u.getFirstName();
+                        lname = u.getLastName();
+                        role = u.getRole();
+                        height = u.getHeight();
+                        waist = u.getWaist();
+                        pScore = u.getPushupScore();
+                        sScore = u.getSitupScore();
+                        freq = u.getFreq();
+                        editTextId.setText("ID: " + id);
+                        editTextEmail.setText("Email: " + email);
+                        editTextFirstname.setText("Firstname: " + fname );
+                        editTextLastname.setText("Lastname: " + lname);
+                        editTextRole.setText("Role:" + role);
+                        editTextHeight.setText("Height: " + height);
+                        editTextWaist.setText("Waist: " + waist);
+                        editTextPushupScore.setText("Pushup Score: " + pScore);
+                        editTextSitupScore.setText("Situp Score: " + sScore);
+                        editTextFreq.setText("Freq: " + freq);
                     }
                 },
                 err -> {
@@ -73,6 +99,43 @@ public class AdminActivity extends AppCompatActivity {
                 });
 
     }
+
+    public void update(View view)
+    {
+        User user = new User();
+        fname = editTextFirstname.getText().toString();
+        user.setFirstName(fname);
+        lname = editTextLastname.getText().toString();
+        user.setLastName(lname);
+        role = editTextRole.getText().charAt(0);
+        user.setRole(role);
+        height = Float.parseFloat(editTextHeight.getText().toString());
+        user.setHeight(height);
+        waist = Float.parseFloat(editTextWaist.getText().toString());
+        user.setWaist(waist);
+        freq = Integer.parseInt(editTextFreq.getText().toString());
+        user.setFreq(freq);
+
+        if(targetUser != null)
+        {
+            api.adminUpdateUser(targetUser, user,
+                    res->
+                    {
+                        res.setData(user);
+                    },
+                    err ->
+                    {
+                        //error
+                    }
+                    );
+        }
+        else
+        {
+            Toast.makeText(this, "No user found yet for updating", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 
     public void reset(View view) {
     }
