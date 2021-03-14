@@ -38,7 +38,7 @@ public class ApiDebugActivity extends AppCompatActivity {
     }
 
     public void onDebugButtonPress(View v) {
-        testGetRecommendedWorkouts();
+        getGroup();
     }
 
     private void testGetUserInfo() {
@@ -72,7 +72,16 @@ public class ApiDebugActivity extends AppCompatActivity {
         api.getGroup(groupId, res -> {
             Group group = res.getData();
             StringBuilder sb = new StringBuilder();
-            //sb.append();
+            User[] members = group.getMembers();
+            sb.append(String.format("Group members before join (Count: %s)\n", members.length));
+            for (User m : members) {
+                String text = String.format("\n[%s] %s %s (%s)\n",
+                        m.get_id(), m.getFirstName(), m.getLastName(), m.getEmail());
+                sb.append(text);
+            }
+            setSuccessText(sb.toString());
+
+            testJoinGroup();
 
         }, stdErrListener);
     }
@@ -90,7 +99,19 @@ public class ApiDebugActivity extends AppCompatActivity {
     }
 
     private void testJoinGroup() {
-        final String groupId = "RLY51W"; // make sure it's not your group
+        final String groupId = "SR7HZU"; // make sure it's not your group
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"+
+                ".eyJfaWQiOiI2MDRiZTE0MDhhZDVhOTAwMTU3NjNkNDUiLCJlbWFpbCI6ImJyZW50b25"+
+                "AZW1haWwuY29tIiwicm9sZSI6IlUiLCJ0cyI6MTYxNTY1ODgwMjYyNCwiaWF0IjoxNj"+
+                "E1NjU4ODAyLCJleHAiOjE2MTYyNjM2MDJ9"+
+                ".T2nT6-3_-S3SBTRidTskSNBohjbIA5A1EKiIonMItg0";
+
+        String token2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI"+
+                "2MDRiZGYwMGQxNGQ5ZjAwMTUzMmUwYjIiLCJlbWFpbCI6ImZpYWNyZUBlbWFpbC5jb20iLC"+
+                "Jyb2xlIjoiVSIsInRzIjoxNjE1NTg1MDY1NDc4LCJpYXQiOjE2MTU1OD"+
+                "UwNjUsImV4cCI6MTYxNjE4OTg2NX0.E_Pea-RnJ9Z0tQy1tuPbq-MMzB4Td_sgB3SYOws4Ydw";
+
+        api.setAuthorization(token2);
         api.joinGroup(groupId, res -> {
             Group group = res.getData();
             StringBuilder sb = new StringBuilder();
@@ -101,7 +122,8 @@ public class ApiDebugActivity extends AppCompatActivity {
                         m.get_id(), m.getFirstName(), m.getLastName(), m.getEmail());
                 sb.append(text);
             }
-            setSuccessText(sb.toString());
+            String prev = textView.getText().toString();
+            setSuccessText(prev + "\n\n" + sb.toString());
         }, stdErrListener);
     }
 

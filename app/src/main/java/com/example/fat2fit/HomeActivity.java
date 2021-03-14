@@ -37,6 +37,6 @@ public class HomeActivity extends AppCompatActivity {
     }
     public void joinGroup(View view)
     {
-        startActivity(new Intent(HomeActivity.this, Join_LeaveGroupActivity.class));
+        startActivity(new Intent(getApplicationContext(), Join_LeaveGroupActivity.class));
     }
 }
