@@ -47,27 +47,36 @@ public class TestAdminActivity2_Searching extends AppCompatActivity {
         //Expected outcome:
         //The user is searched
 
-        String userName = "example@gmail.com";
+        String userName = "example@email.com";
         api.login("admin@email.com", "Password#123$", res ->
         {
             api.adminSearchUser(userName, response->
             {
                 User[] users = response.getData();
+                if (users.length > 0) {
+                    setSuccessText("PASSED");
+                } else {
+                    setErrorText("");
+                }
                 for(User u: users)
                 {
-                    if(u.getEmail() == userName)
+                    if(u.getEmail().equals(userName))
                     {
+                        setSuccessText("Passed (FOUND USER)");
                         user = u;
+                        break;
                     }
+
                 }
             }, error ->
             {
                 //test failed
+                setErrorText(error.getMessage());
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             });
         }, err ->
                 {
-
+                    setErrorText(err.getMessage());
                 });
     }
 
@@ -83,21 +92,28 @@ public class TestAdminActivity2_Searching extends AppCompatActivity {
             api.adminSearchUser(userName, response->
             {
                 User[] users = response.getData();
-                for(User u: users)
+                if (users.length > 0) {
+                    setErrorText("FAILED, found " + users.length + " users");
+                } else {
+                    setSuccessText("PASSED (found 0 users)");
+                }
+                /*for(User u: users)
                 {
-                    if(u.getEmail() == userName)
+                    if(u.getEmail().equals(userName))
                     {
                         user = u;
+                        setErrorText("FAILED!");
                     }
-                }
+                }*/
             }, error ->
             {
+                setErrorText("FAILED\n" + error.getMessage());
                 //test failed
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             });
         }, err ->
         {
-
+            setErrorText("FAILED\n" + err.getMessage());
         });
     }
 

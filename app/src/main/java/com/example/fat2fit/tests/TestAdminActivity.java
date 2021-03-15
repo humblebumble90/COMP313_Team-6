@@ -101,7 +101,7 @@ public class TestAdminActivity extends AppCompatActivity {
         //“Cannot find user”
         //Result:
 
-        String id = "645sdfsdf46s4dfsds65";
+        String id = "645sdfsdf46s4dfsds65"; // USER DOESN'T EXIST
         originUser = new User();
         originUser.set_id(id);
         originUser.setFirstName("Mia");
