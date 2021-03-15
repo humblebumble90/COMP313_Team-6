@@ -115,12 +115,10 @@ public class TestFitnessDataActivity extends AppCompatActivity {
 
 
     private void init() {
-        testButton.setEnabled(false);
         String email = "test1@email.com";
         String password = "Password#123$";
         api.login(email, password, res -> {
             Log.d("TEST_FITNESS_DATA", "Logged in successfully");
-            testButton.setEnabled(true);
         }, err -> {
             testButton.setText(err.getMessage());
             Log.e("TEST_FITNESS_DATA", err.getMessage());

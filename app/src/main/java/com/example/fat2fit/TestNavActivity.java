@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.fat2fit.tests.TestAdminActivity;
+import com.example.fat2fit.tests.TestAdminActivity2_Searching;
 import com.example.fat2fit.tests.TestCreateGroupActivitiesActivity;
 import com.example.fat2fit.tests.TestCreateGroupActivity;
 import com.example.fat2fit.tests.TestFitnessDataActivity;
@@ -46,9 +47,9 @@ public class TestNavActivity extends AppCompatActivity {
     public void Story7(View view){
         startActivity(new Intent(getApplicationContext(), TestAdminActivity.class));
     }
-//    public void Story8(View view){
-//        startActivity(new Intent(getApplicationContext(), .class));
-//    }
+    public void Story8(View view){
+        startActivity(new Intent(getApplicationContext(), TestAdminActivity2_Searching.class));
+    }
     public void Home(View view){
         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     }

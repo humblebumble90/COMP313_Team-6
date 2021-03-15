@@ -48,15 +48,10 @@ public class TestJoin_LeaveGroupActivity extends AppCompatActivity {
      */
     private void test1() {
         final String groupId = "SR7HZU";
-        testButton.setEnabled(false);
-        String email = "test1@email.com";
+        String email = "test5@email.com";
         String password = "Password#123$";
         api.login(email, password, res -> {
             Log.d("TEST1_JOIN_GROUP", "Logged in successfully");
-            UserToken ut = res.getData();
-            String token = ut.toString();
-            api.setAuthorization(token);
-            testButton.setEnabled(true);
             api.joinGroup(groupId, res1 -> {
                 Group group = res1.getData();
                 if(group.get_id().equals(groupId)){
@@ -64,9 +59,9 @@ public class TestJoin_LeaveGroupActivity extends AppCompatActivity {
                 }
             },err ->{
                 setErrorText("Failed test 1");
+                Log.e("TEST1_JOIN_GROUP", err.getMessage());
             });
         }, err -> {
-            testButton.setText(err.getMessage());
             Log.e("TEST1_JOIN_GROUP", err.getMessage());
         });
     }
@@ -76,15 +71,9 @@ public class TestJoin_LeaveGroupActivity extends AppCompatActivity {
      */
     private void test2() {
         final String groupId = "SR7HZU";
-        testButton.setEnabled(false);
         String email = "test1@email.com";
         String password = "Password#123$";
         api.login(email, password, res -> {
-            Log.d("TEST2_JOIN_GROUP", "Logged in successfully");
-            UserToken ut = res.getData();
-            String token = ut.toString();
-            api.setAuthorization(token);
-            testButton.setEnabled(true);
             api.joinGroup(groupId, res1 -> {
                 Group group = res1.getData();
                 if(group.get_id().equals(groupId)){
@@ -92,9 +81,9 @@ public class TestJoin_LeaveGroupActivity extends AppCompatActivity {
                 }
             },err ->{
                 setSuccessText("Passed test 2");
+                Log.e("TEST2_JOIN_GROUP", err.getMessage());
             });
         }, err -> {
-            testButton.setText(err.getMessage());
             Log.e("TEST2_JOIN_GROUP", err.getMessage());
         });
     }
@@ -105,39 +94,28 @@ public class TestJoin_LeaveGroupActivity extends AppCompatActivity {
      */
     private void test3() {
         final String groupId = "SR7HZU";
-        testButton.setEnabled(false);
-        String email = "test1@email.com";
+        String email = "test5@email.com";
         String password = "Password#123$";
         api.login(email, password, res -> {
             Log.d("TEST3_LEAVE_GROUP", "Logged in successfully");
-            UserToken ut = res.getData();
-            String token = ut.toString();
-            api.setAuthorization(token);
-            testButton.setEnabled(true);
             api.leaveGroup(groupId, res1 -> {
-                if(res1.getMeta().getMsg().equals("Successfully left")){
+                if(res1.getData().equals(groupId)){
                     setSuccessText("Passed test 3");
                 }
             },err ->{
                 setErrorText("Failed test 3");
             });
         }, err -> {
-            testButton.setText(err.getMessage());
             Log.e("TEST3_LEAVE_GROUP", err.getMessage());
         });
     }
 
     private void test4() {
         final String groupId = "WZAQT8";
-        testButton.setEnabled(false);
         String email = "test1@email.com";
         String password = "Password#123$";
         api.login(email, password, res -> {
             Log.d("TEST4_LEAVE_GROUP", "Logged in successfully");
-            UserToken ut = res.getData();
-            String token = ut.toString();
-            api.setAuthorization(token);
-            testButton.setEnabled(true);
             api.leaveGroup(groupId, res1 -> {
                 if(res1.getMeta().getMsg().equals("Successfully left")){
                     setErrorText("Failed test 4");
@@ -146,7 +124,6 @@ public class TestJoin_LeaveGroupActivity extends AppCompatActivity {
                 setSuccessText("Passed test 4");
             });
         }, err -> {
-            testButton.setText(err.getMessage());
             Log.e("TEST4_LEAVE_GROUP", err.getMessage());
         });
     }

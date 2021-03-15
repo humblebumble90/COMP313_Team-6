@@ -26,7 +26,7 @@ public class TestAdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_admin2);
+        setContentView(R.layout.activity_testing);
         api = Fat2FitApi.getInstance(this);
         testTextView = findViewById(R.id.testTextView);
         testButton = findViewById(R.id.testButton);
@@ -76,7 +76,7 @@ public class TestAdminActivity extends AppCompatActivity {
                             error ->
                             {
                                 //test failed
-                                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                                setErrorText("Failed test 1");
                             }
                     );
                 },
@@ -115,7 +115,7 @@ public class TestAdminActivity extends AppCompatActivity {
                             error ->
                             {
                                 //test failed
-                                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                                setErrorText("Failed test 1");
                             }
                     );
                 },
@@ -154,7 +154,7 @@ public class TestAdminActivity extends AppCompatActivity {
                             error ->
                             {
                                 //test failed
-                                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                                setErrorText("Failed test 1");
                             }
                     );
                 },

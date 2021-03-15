@@ -45,10 +45,10 @@ public class TestPassResetActivity extends AppCompatActivity {
      * Send incorrect answers
      */
     private void test1() {
-        String email = "test1@email.com";
+        String email = "test3@email.com";
         PasswordSecurity answers = new PasswordSecurity();
-        answers.answer1= "Correct1";
-        answers.answer2 = "Correct2";
+        answers.answer1= "bobby";
+        answers.answer2 = "moddy";
         String newPassword = "Password123$";
         api.answerQuestions(email,answers, res -> {
             String ut = res.getData();
@@ -76,11 +76,11 @@ public class TestPassResetActivity extends AppCompatActivity {
      * Send Correct answers
      */
     private void test2() {
-        String email = "test1@email.com";
+        String email = "test3@email.com";
         PasswordSecurity answers = new PasswordSecurity();
         answers.answer1= "Correct1";
         answers.answer2 = "Correct2";
-        String newPassword = "Password123$";
+        String newPassword = "Password#123$";
         api.answerQuestions(email,answers, res -> {
             String ut = res.getData();
             api.resetPassword(ut,newPassword,res1 ->{
@@ -106,7 +106,7 @@ public class TestPassResetActivity extends AppCompatActivity {
      * No Credentials
      */
     private void test3() {
-        String email = "test1@email.com";
+        String email = "test3@email.com";
         PasswordSecurity answers = new PasswordSecurity();
         answers.answer1= "Correct1";
         answers.answer2 = "Correct2";
