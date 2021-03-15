@@ -61,13 +61,13 @@ public class TestAdminActivity extends AppCompatActivity {
         originUser.set_id(id);
         originUser.setEmail("");
         updatedUser.setFirstName("UpdatedJohn");
-        updatedUser.setLastName("Updated Doe");
+        updatedUser.setLastName("UpdatedDoe");
         originUser.setPassword("");
 
         updatedUser = new User();
         updatedUser.set_id(originUser.get_id());
         updatedUser.setFirstName("UpdatedJohn");
-        updatedUser.setLastName("Updated Doe");
+        updatedUser.setLastName("UpdatedDoe");
         updatedUser.setEmail(originUser.getEmail());
         updatedUser.setPassword(originUser.getPassword());
 
