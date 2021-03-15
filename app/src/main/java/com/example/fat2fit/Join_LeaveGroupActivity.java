@@ -20,7 +20,6 @@ public class Join_LeaveGroupActivity extends AppCompatActivity {
     private Button leaveButton;
     private EditText groupCodeEdx;
     private String text = "";
-    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDRiZGYwMGQxNGQ5ZjAwMTUzMmUwYjIiLCJlbWFpbCI6ImZpYWNyZUBlbWFpbC5jb20iLCJyb2xlIjoiVSIsInRzIjoxNjE1NTg1MDY1NDc4LCJpYXQiOjE2MTU1ODUwNjUsImV4cCI6MTYxNjE4OTg2NX0.E_Pea-RnJ9Z0tQy1tuPbq-MMzB4Td_sgB3SYOws4Ydw";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,28 +36,48 @@ public class Join_LeaveGroupActivity extends AppCompatActivity {
         });
     }
 
+    public void leaveGroup(View view) {
+        Fat2FitApi api = Fat2FitApi.getInstance(this);
+        String groupId = groupCodeEdx.getText().toString();
+        api.leaveGroup(groupId, res -> {
+            Toast.makeText(
+                    getApplicationContext(),
+                    res.getMeta().getMsg(),
+                    Toast.LENGTH_SHORT).show();
+            finish();
+        }, err -> {
+            // Unsuccessful
+            Toast.makeText(
+                    getApplicationContext(),
+                    err.getMessage(),
+                    Toast.LENGTH_SHORT).show();
+        });
+    }
+
     public void joinGroup(View view)
     {
         Fat2FitApi api = Fat2FitApi.getInstance(this);
-        Context context = getApplicationContext();
-        api.setAuthorization(token);
-        String groupId = "SR7HZU"; // not real, use "SR7HZU" 0DMTAK
+        String groupId = groupCodeEdx.getText().toString();
         api.joinGroup(groupId, res -> {
-            Group group = res.getData();
-           group.set_id(groupId);
-            text = "You have successfully joined the Group";
-            //group.setMembers();
+            Toast.makeText(
+                    getApplicationContext(),
+                    res.getMeta().getMsg(),
+                    Toast.LENGTH_SHORT).show();
+            finish();
         }, err -> {
             // Unsuccessful
-            text = "An error occurred. Check Group Code.";
+            Toast.makeText(
+                    getApplicationContext(),
+                    err.getMessage(),
+                    Toast.LENGTH_SHORT).show();
         });
 
 
 
-        int duration = Toast.LENGTH_SHORT;
+        //int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        startActivity(new Intent(Join_LeaveGroupActivity.this, HomeActivity.class));
+        //Toast toast = Toast.makeText(context, text, duration);
+        //toast.show();
+        //startActivity(new Intent(Join_LeaveGroupActivity.this, HomeActivity.class));
     }
 }
