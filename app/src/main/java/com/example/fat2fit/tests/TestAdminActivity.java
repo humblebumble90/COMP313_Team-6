@@ -40,7 +40,7 @@ public class TestAdminActivity extends AppCompatActivity {
             case 2: Test2(); return;
             case 3: Test3(); return;
             case 4: Test4(); return;
-            default: //setErrorText("Incorrect Test Number");
+            default: setErrorText("Incorrect Test Number");
                 return;
         }
     }
@@ -60,8 +60,8 @@ public class TestAdminActivity extends AppCompatActivity {
         originUser = new User();
         originUser.set_id(id);
         originUser.setEmail("");
-        updatedUser.setFirstName("UpdatedJohn");
-        updatedUser.setLastName("UpdatedDoe");
+        originUser.setFirstName("");
+        originUser.setLastName("");
         originUser.setPassword("");
 
         updatedUser = new User();
@@ -77,6 +77,9 @@ public class TestAdminActivity extends AppCompatActivity {
                             response->
                             {
                                 originUser = response.getData();
+                                if(originUser.getFirstName().equals(updatedUser.getFirstName())){
+                                    setSuccessText("Passed test 1");
+                                }
 
                             },
                             error ->
@@ -127,7 +130,7 @@ public class TestAdminActivity extends AppCompatActivity {
                             error ->
                             {
                                 //test failed
-                                setErrorText("Failed test 1");
+                                setSuccessText("Passed test 2");
                             }
                     );
                 },
@@ -170,16 +173,16 @@ public class TestAdminActivity extends AppCompatActivity {
                             {
                                 originUser = response.getData();
                                 if (response.getData().getEmail().equals(newEmail)) {
-                                    setErrorText("Failed test 1");
+                                    setErrorText("Failed test 3");
                                 } else {
-                                    setSuccessText("Passed test");
+                                    setSuccessText("Passed test 3");
                                 }
 
                             },
                             error ->
                             {
                                 //test failed
-                                setErrorText("Failed test 1");
+                                setErrorText("Failed test 3");
                             }
                     );
                 },
