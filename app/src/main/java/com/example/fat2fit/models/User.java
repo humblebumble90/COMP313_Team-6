@@ -10,7 +10,11 @@ public class User {
         char CUSTOMER_REP = 'C';
     }
 
-    private String _id, email, firstName, lastName, password;
+    private String _id = "",
+            email = "",
+            firstName = "",
+            lastName = "",
+            password = "";
 
     private char role = 'U';
 
