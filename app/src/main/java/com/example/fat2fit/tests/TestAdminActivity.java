@@ -59,11 +59,17 @@ public class TestAdminActivity extends AppCompatActivity {
         String id = "604e614f466f440015e9f3e7";
         originUser = new User();
         originUser.set_id(id);
+        originUser.setEmail("");
+        updatedUser.setFirstName("UpdatedJohn");
+        updatedUser.setLastName("Updated Doe");
+        originUser.setPassword("");
 
         updatedUser = new User();
         updatedUser.set_id(originUser.get_id());
         updatedUser.setFirstName("UpdatedJohn");
         updatedUser.setLastName("Updated Doe");
+        updatedUser.setEmail(originUser.getEmail());
+        updatedUser.setPassword(originUser.getPassword());
 
         api.login("admin@email.com","Password#123$", res ->
                 {
@@ -98,11 +104,17 @@ public class TestAdminActivity extends AppCompatActivity {
         String id = "645sdfsdf46s4dfsds65";
         originUser = new User();
         originUser.set_id(id);
+        originUser.setFirstName("Mia");
+        originUser.setFirstName("Kim");
+        originUser.setEmail("");
+        originUser.setPassword("");
 
         updatedUser = new User();
         updatedUser.set_id(originUser.get_id());
         updatedUser.setFirstName("Updated Mia");
         updatedUser.setLastName("Updated Kim");
+        updatedUser.setPassword(originUser.getPassword());
+        updatedUser.setEmail(originUser.getEmail());
 
         api.login("admin@email.com","Password#123$", res ->
                 {
@@ -138,10 +150,18 @@ public class TestAdminActivity extends AppCompatActivity {
         String id = "604e614f466f440015e9f3e7";
         originUser = new User();
         originUser.set_id(id);
+        originUser.setEmail("");
+        originUser.setPassword("");
+        originUser.setFirstName("");
+        originUser.setLastName("");
 
         updatedUser = new User();
+        String newEmail = "updated@email.com";
         updatedUser.set_id(originUser.get_id());
-        updatedUser.setEmail("updated@email.com");
+        updatedUser.setEmail(newEmail);
+        updatedUser.setLastName(originUser.getLastName());
+        updatedUser.setFirstName(originUser.getFirstName());
+        updatedUser.setPassword(originUser.getPassword());
 
         api.login("admin@email.com","Password#123$", res ->
                 {
@@ -149,6 +169,11 @@ public class TestAdminActivity extends AppCompatActivity {
                             response->
                             {
                                 originUser = response.getData();
+                                if (response.getData().getEmail().equals(newEmail)) {
+                                    setErrorText("Failed test 1");
+                                } else {
+                                    setSuccessText("Passed test");
+                                }
 
                             },
                             error ->
@@ -160,7 +185,7 @@ public class TestAdminActivity extends AppCompatActivity {
                 },
                 err->
                 {
-
+                    setErrorText("Failed test\n" + err.getMessage());
                 });
     }
 
@@ -176,10 +201,15 @@ public class TestAdminActivity extends AppCompatActivity {
 
         originUser = new User();
         originUser.set_id("604e614f466f440015e9f3e7");
+        originUser.setFirstName("Brandon");
+        originUser.setLastName("Hoyle");
+        originUser.setEmail("");
+        originUser.setPassword("");
 
         updatedUser.set_id(originUser.get_id());
         updatedUser.setFirstName("Updated Brandon");
         updatedUser.setLastName("updated Hoyle");
+        updatedUser.setPassword(originUser.getPassword());
 
         api.adminUpdateUser(originUser, updatedUser, res ->
         {
