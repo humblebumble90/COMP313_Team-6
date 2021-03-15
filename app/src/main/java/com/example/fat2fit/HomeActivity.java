@@ -30,9 +30,8 @@ public class HomeActivity extends AppCompatActivity {
 
     public void userProfile(View view)
     {
-        //for some reason moving to the userprofile activity crashes the app
         Toast.makeText(this, "User profile selected!", Toast.LENGTH_LONG).show();
-        //startActivity(new Intent(HomeActivity.this, UserProfileActivity.class));
+        startActivity(new Intent(HomeActivity.this, UserProfileActivity.class));
     }
     public void customerRep(View view) {
         Toast.makeText(this, "Customer rep selected!", Toast.LENGTH_LONG).show();
