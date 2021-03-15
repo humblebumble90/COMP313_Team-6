@@ -19,6 +19,7 @@
         <activity android:name=".tests.TestLoginActivity" />
         <activity android:name=".tests.TestCreateGroupActivity" />
         <activity android:name=".tests.TestPassResetActivity" />
+        <activity android:name=".tests.TestJoin_LeaveGroupActivity"/>
         <activity android:name=".tests.TestCreateGroupActivitiesActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".CreateActivity" />
