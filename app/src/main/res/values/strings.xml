@@ -98,5 +98,31 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
+    <string-array name="workouts">
+        <item>Push Up</item>
+        <item>Bench Press</item>
+        <item>Sit Up</item>
+        <item>Squats</item>
+        <item>Curls</item>
+        <item>Planks</item>
+        <item>Jumping Jacks</item>
+        <item>Lift</item>
+        <item>Running</item>
+        <item>Shrugs</item>
+    </string-array>
+
+    <string-array name="workouts_details">
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+    </string-array>
+
 
 </resources>
