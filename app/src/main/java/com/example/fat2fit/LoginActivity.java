@@ -23,10 +23,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
          api = Fat2FitApi.getInstance(this);
     }
-    //this is just temporary, should be replaced with proper login fields and stuff
 
-        public void login(View view)
-    {
+        public void login(View view) {
         emailEditText = findViewById(R.id.usernameText);
         passwordEditText = findViewById(R.id.passwordText);
 
@@ -37,13 +35,13 @@ public class LoginActivity extends AppCompatActivity {
             User user = res.getData().getUser();
             char role = user.getRole();
 
-            if (role == 'A') {
+            if (role == User.Roles.ADMIN) {
                 // logged in as admin.
                 startActivity(new Intent(LoginActivity.this, AdminActivity.class));
-            } else if (role == 'C') {
+            } else if (role == User.Roles.CUSTOMER_REP) {
                 // logged in as Customer rep.
                 //startActivity();
-            } else if (role == 'U') {
+            } else if (role == User.Roles.END_USER) {
                 // logged in as end user
                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }

@@ -27,6 +27,6 @@ public class CustomerRepChallengesActivity extends AppCompatActivity {
     }
     public void goBack(View view)
     {
-        startActivity(new Intent(CustomerRepChallengesActivity.this, HomeActivity.class));
+        finish();
     }
 }

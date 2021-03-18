@@ -1,8 +1,9 @@
-package com.example.fat2fit;
+package com.example.fat2fit.tests;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.fat2fit.R;
 import com.example.fat2fit.tests.TestAdminActivity;
 import com.example.fat2fit.tests.TestAdminActivity2_Searching;
 import com.example.fat2fit.tests.TestCreateGroupActivitiesActivity;
@@ -27,30 +28,35 @@ public class TestNavActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_nav);
     }
     public void Story1(View view){
-        startActivity(new Intent(getApplicationContext(), TestLoginActivity.class));
+        launchTest(TestLoginActivity.class);
     }
     public void Story2(View view){
-        startActivity(new Intent(getApplicationContext(), TestPassResetActivity.class));
+        launchTest(TestPassResetActivity.class);
     }
     public void Story3(View view){
-        startActivity(new Intent(getApplicationContext(), TestFitnessDataActivity.class));
+        launchTest(TestFitnessDataActivity.class);
     }
     public void Story4(View view){
-        startActivity(new Intent(getApplicationContext(), TestCreateGroupActivity.class));
+        launchTest(TestCreateGroupActivity.class);
     }
     public void Story5(View view){
-        startActivity(new Intent(getApplicationContext(), TestJoin_LeaveGroupActivity.class));
+        launchTest(TestJoin_LeaveGroupActivity.class);
     }
     public void Story6(View view){
-        startActivity(new Intent(getApplicationContext(), TestCreateGroupActivitiesActivity.class));
+        launchTest(TestCreateGroupActivitiesActivity.class);
     }
     public void Story7(View view){
-        startActivity(new Intent(getApplicationContext(), TestAdminActivity.class));
+        launchTest(TestAdminActivity.class);
     }
     public void Story8(View view){
-        startActivity(new Intent(getApplicationContext(), TestAdminActivity2_Searching.class));
+        launchTest(TestAdminActivity2_Searching.class);
     }
     public void Home(View view){
-        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        finish();
+    }
+
+    private void launchTest(Class<?> class0) {
+        Intent intent = new Intent(getApplicationContext(), class0);
+        startActivity(intent);
     }
 }
