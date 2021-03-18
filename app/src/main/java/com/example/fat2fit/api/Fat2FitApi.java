@@ -23,6 +23,8 @@ public class Fat2FitApi {
     private static final String
             AUTH_HEADER = "Authorization",
             BEARER_PREFIX = "Bearer ",
+            SAVED_EMAIL = "email",
+            SAVED_PASS = "pass",
             API_URL = "https://fat2fit-api.herokuapp.com";
     private static final JSONObject EMPTY_JSON = new JSONObject();
 
@@ -66,6 +68,20 @@ public class Fat2FitApi {
         edit.apply();
     }
 
+    public String getSavedEmail() {
+        return RequestHelper.getPrefs().getString(SAVED_EMAIL, "");
+    }
+    public String getSavedPassword() {
+        return RequestHelper.getPrefs().getString(SAVED_PASS, "");
+    }
+
+    private void saveEmailAndPassword(String email, String password) {
+        SharedPreferences.Editor edit = RequestHelper.getPrefs().edit();
+        edit.putString(SAVED_EMAIL, email);
+        edit.putString(SAVED_PASS, password);
+        edit.apply();
+    }
+
     public String getAuthorization() {
         try {
             return headers.get(AUTH_HEADER);
@@ -96,6 +112,7 @@ public class Fat2FitApi {
          // Up to you if you want to auto load the token
         ApiResponse.Listener<UserToken> wrapper = data -> {
             setAuthorization(data.getData().getToken());
+            saveEmailAndPassword(email, password);
             resListener.onResponse(data);
         };
 

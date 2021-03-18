@@ -22,11 +22,18 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
          api = Fat2FitApi.getInstance(this);
+
+         emailEditText = findViewById(R.id.usernameText);
+         passwordEditText = findViewById(R.id.passwordText);
+
+         email = api.getSavedEmail();
+         password = api.getSavedPassword();
+
+         emailEditText.setText(email);
+         passwordEditText.setText(password);
     }
 
         public void login(View view) {
-        emailEditText = findViewById(R.id.usernameText);
-        passwordEditText = findViewById(R.id.passwordText);
 
         email = emailEditText.getText().toString();
         password = passwordEditText.getText().toString();
