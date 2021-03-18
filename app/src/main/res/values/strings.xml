@@ -124,5 +124,7 @@
         <item>Placeholder Details</item>
     </string-array>
 
+    <!--Recommended Workout Strings -->
+    <string name="workoutName_Text">Workout Name</string>
 
 </resources>
