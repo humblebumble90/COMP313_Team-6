@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
+import com.example.fat2fit.api.ApiResponse;
 import com.example.fat2fit.api.Fat2FitApi;
 import com.example.fat2fit.models.Group;
 import com.example.fat2fit.models.User;
@@ -39,45 +41,35 @@ public class Join_LeaveGroupActivity extends AppCompatActivity {
     public void leaveGroup(View view) {
         Fat2FitApi api = Fat2FitApi.getInstance(this);
         String groupId = groupCodeEdx.getText().toString();
-        api.leaveGroup(groupId, res -> {
-            Toast.makeText(
-                    getApplicationContext(),
-                    res.getMeta().getMsg(),
-                    Toast.LENGTH_SHORT).show();
-            finish();
-        }, err -> {
-            // Unsuccessful
-            Toast.makeText(
-                    getApplicationContext(),
-                    err.getMessage(),
-                    Toast.LENGTH_SHORT).show();
-        });
+        api.leaveGroup(groupId, this::handleLeaveResponse, this::handleError);
     }
 
-    public void joinGroup(View view)
-    {
+    public void joinGroup(View view) {
         Fat2FitApi api = Fat2FitApi.getInstance(this);
         String groupId = groupCodeEdx.getText().toString();
-        api.joinGroup(groupId, res -> {
-            Toast.makeText(
-                    getApplicationContext(),
-                    res.getMeta().getMsg(),
-                    Toast.LENGTH_SHORT).show();
-            finish();
-        }, err -> {
-            // Unsuccessful
-            Toast.makeText(
-                    getApplicationContext(),
-                    err.getMessage(),
-                    Toast.LENGTH_SHORT).show();
-        });
+        api.joinGroup(groupId, this::handleJoinResponse, this::handleError);
+    }
 
+    private void handleLeaveResponse(ApiResponse<String> res) {
+        Toast.makeText(
+                getApplicationContext(),
+                res.getMeta().getMsg(),
+                Toast.LENGTH_SHORT).show();
+        finish();
+    }
 
+    private void handleJoinResponse(ApiResponse<Group> res) {
+        Toast.makeText(
+                getApplicationContext(),
+                res.getMeta().getMsg(),
+                Toast.LENGTH_SHORT).show();
+        finish();
+    }
 
-        //int duration = Toast.LENGTH_SHORT;
-
-        //Toast toast = Toast.makeText(context, text, duration);
-        //toast.show();
-        //startActivity(new Intent(Join_LeaveGroupActivity.this, HomeActivity.class));
+    private void handleError(VolleyError err) {
+        Toast.makeText(
+                getApplicationContext(),
+                err.getMessage(),
+                Toast.LENGTH_SHORT).show();
     }
 }

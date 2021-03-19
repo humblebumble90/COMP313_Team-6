@@ -49,10 +49,11 @@ public class ApiRequest<T> extends Request<ApiResponse<T>> {
             ApiResponse.Listener<F> listener,
             Response.ErrorListener errorListener
     ) {
-        return new ApiRequest<>(
-                Method.GET, url, class0,
-                headers, null,
-                listener, errorListener);
+        ApiRequest<F> request = new ApiRequest<>(
+                Method.GET, url, class0, headers,
+                null, listener, errorListener);
+        RequestHelper.addToRequestQueue(request);
+        return request;
     }
 
     public static <F> ApiRequest<F> post(
@@ -63,10 +64,11 @@ public class ApiRequest<T> extends Request<ApiResponse<T>> {
             ApiResponse.Listener<F> resListener,
             Response.ErrorListener errorListener
     ) {
-        return new ApiRequest<>(
-                Method.POST, url, class0,
-                headers, body,
-                resListener, errorListener);
+        ApiRequest<F> request = new ApiRequest<>(
+                Method.POST, url, class0, headers,
+                body, resListener, errorListener);
+        RequestHelper.addToRequestQueue(request);
+        return request;
     }
 
     public static <F> ApiRequest<F> put(
@@ -77,10 +79,11 @@ public class ApiRequest<T> extends Request<ApiResponse<T>> {
             ApiResponse.Listener<F> resListener,
             Response.ErrorListener errorListener
     ) {
-        return new ApiRequest<>(
-                Method.PUT, url, class0,
-                headers, body,
-                resListener, errorListener);
+        ApiRequest<F> request = new ApiRequest<>(
+                Method.PUT, url, class0, headers,
+                body, resListener, errorListener);
+        RequestHelper.addToRequestQueue(request);
+        return request;
     }
 
     @Override

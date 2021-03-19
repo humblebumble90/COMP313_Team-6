@@ -7,6 +7,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.android.volley.Response;
+import com.example.fat2fit.models.Challenge;
 import com.example.fat2fit.models.Group;
 import com.example.fat2fit.models.GroupActivity;
 import com.example.fat2fit.models.PasswordSecurity;
@@ -23,6 +24,8 @@ public class Fat2FitApi {
     private static final String
             AUTH_HEADER = "Authorization",
             BEARER_PREFIX = "Bearer ",
+            SAVED_EMAIL = "email",
+            SAVED_PASS = "pass",
             API_URL = "https://fat2fit-api.herokuapp.com";
     private static final JSONObject EMPTY_JSON = new JSONObject();
 
@@ -66,6 +69,20 @@ public class Fat2FitApi {
         edit.apply();
     }
 
+    public String getSavedEmail() {
+        return RequestHelper.getPrefs().getString(SAVED_EMAIL, "");
+    }
+    public String getSavedPassword() {
+        return RequestHelper.getPrefs().getString(SAVED_PASS, "");
+    }
+
+    private void saveEmailAndPassword(String email, String password) {
+        SharedPreferences.Editor edit = RequestHelper.getPrefs().edit();
+        edit.putString(SAVED_EMAIL, email);
+        edit.putString(SAVED_PASS, password);
+        edit.apply();
+    }
+
     public String getAuthorization() {
         try {
             return headers.get(AUTH_HEADER);
@@ -96,15 +113,13 @@ public class Fat2FitApi {
          // Up to you if you want to auto load the token
         ApiResponse.Listener<UserToken> wrapper = data -> {
             setAuthorization(data.getData().getToken());
+            saveEmailAndPassword(email, password);
             resListener.onResponse(data);
         };
 
-        ApiRequest<UserToken> request = ApiRequest.post(
+        return ApiRequest.post(
                 UserToken.class, endpoint, headers,
                 body, wrapper, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<User> signUp(
@@ -130,12 +145,9 @@ public class Fat2FitApi {
             return null;
         }
 
-        ApiRequest<User> request = ApiRequest.post(
+        return ApiRequest.post(
                 User.class, endpoint, headers,
                 body, resListener, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<User> getUserInfo(
@@ -143,12 +155,9 @@ public class Fat2FitApi {
             Response.ErrorListener errorListener
     ) {
         final String endpoint = API_URL + "/account/info";
-        ApiRequest<User> request = ApiRequest.get(
+        return ApiRequest.get(
                 User.class, endpoint, headers,
                 resListener, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<User> sendFitData(
@@ -170,12 +179,9 @@ public class Fat2FitApi {
             return null;
         }
 
-        ApiRequest<User> request = ApiRequest.post(
+        return ApiRequest.post(
                 User.class, endpoint, headers,
                 body, resListener, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<PasswordSecurity> getQuestions(
@@ -184,12 +190,9 @@ public class Fat2FitApi {
             Response.ErrorListener errorListener
     ) {
         final String endpoint = API_URL + "/account/questions" + ("?email=" + email);
-        ApiRequest<PasswordSecurity> request = ApiRequest.get(
+        return ApiRequest.get(
                 PasswordSecurity.class, endpoint,
                 headers, resListener, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<String> answerQuestions(
@@ -208,12 +211,9 @@ public class Fat2FitApi {
             return null;
         }
 
-        ApiRequest<String> request = ApiRequest.post(
+        return ApiRequest.post(
                 String.class, endpoint, headers,
                 body, resListener, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<User> resetPassword(
@@ -239,12 +239,9 @@ public class Fat2FitApi {
             headers.remove(AUTH_HEADER);
             errorListener.onErrorResponse(err);
         };
-        ApiRequest<User> request = ApiRequest.post(
+        return ApiRequest.post(
                 User.class, endpoint, headers,
                 body, resWrapper, errWrapper);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     //--------------------------------------------------
@@ -264,12 +261,9 @@ public class Fat2FitApi {
             return null;
         }
 
-        ApiRequest<Group> request = ApiRequest.post(
+        return ApiRequest.post(
                 Group.class, endpoint, headers,
                 body, resListener, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<Group> joinGroup(
@@ -279,12 +273,9 @@ public class Fat2FitApi {
     ) {
         final String endpoint = API_URL + "/group/join/" + groupId;
 
-        ApiRequest<Group> request = ApiRequest.put(
+        return ApiRequest.put(
                 Group.class, endpoint, headers,
                 EMPTY_JSON, resListener, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<String> leaveGroup(
@@ -294,12 +285,9 @@ public class Fat2FitApi {
     ) {
         final String endpoint = API_URL + "/group/leave/" + groupId;
 
-        ApiRequest<String> request = ApiRequest.put(
+        return ApiRequest.put(
                 String.class, endpoint, headers,
                 EMPTY_JSON, resListener, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<Group> getGroup(
@@ -309,12 +297,9 @@ public class Fat2FitApi {
     ) {
         final String endpoint = API_URL + "/group/" + groupId;
 
-        ApiRequest<Group> request = ApiRequest.get(
+        return ApiRequest.get(
                 Group.class, endpoint, headers,
                 resListener, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<GroupActivity> createGroupActivity(
@@ -337,12 +322,9 @@ public class Fat2FitApi {
             return null;
         }
 
-        ApiRequest<GroupActivity> request = ApiRequest.post(
+        return ApiRequest.post(
                 GroupActivity.class, endpoint, headers,
                 body, resListener, errorListener);
-
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     //--------------------------------------------------
@@ -365,11 +347,9 @@ public class Fat2FitApi {
             resListener.onResponse(trueResponse);
         };
 
-        ApiRequest<Group> request = ApiRequest.get(
+        return ApiRequest.get(
                 Group.class, endpoint, headers,
                 wrapper, errorListener);
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     //--------------------------------------------------
@@ -394,11 +374,9 @@ public class Fat2FitApi {
             return null;
         }
 
-        ApiRequest<User> request = ApiRequest.post(
+        return ApiRequest.post(
                 User.class, endpoint, headers,
                 body, resListener, errorListener);
-        RequestHelper.addToRequestQueue(request);
-        return request;
     }
 
     public ApiRequest<User[]> adminSearchUser(
@@ -417,12 +395,77 @@ public class Fat2FitApi {
             return null;
         }
 
-        ApiRequest<User[]> request = ApiRequest.post(
+        return ApiRequest.post(
                 User[].class, endpoint, headers,
                 body, resListener, errorListener);
-        RequestHelper.addToRequestQueue(request);
-        return request;
+    }
 
+    //--------------------------------------------------
+
+    /**
+     * Customer rep only
+     */
+    public ApiRequest<Challenge[]> getChallenges(
+            ApiResponse.Listener<Challenge[]> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/cusrep/challenges";
+        return ApiRequest.get(
+                Challenge[].class, endpoint, headers,
+                resListener, errorListener);
+    }
+
+    /**
+     * Customer rep only
+     */
+    public ApiRequest<Challenge> updateChallenge(
+            Challenge challenge,
+            ApiResponse.Listener<Challenge> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        String id = challenge.get_id();
+        if (id == null || id.isEmpty()) return null;
+        final String endpoint = API_URL + "/cusrep/challenges/" + id;
+        JSONObject body = new JSONObject();
+
+        try {
+            body.put("title", challenge.getTitle());
+            body.put("description", challenge.getDescription());
+            body.put("distance", challenge.getDistance());
+            // TODO: Add field to update reward
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return ApiRequest.post(
+                Challenge.class, endpoint, headers,
+                body, resListener, errorListener);
+    }
+
+    /**
+     * Customer rep only
+     */
+    public ApiRequest<Challenge> createChallenge(
+            String title, String description, double distance,
+            ApiResponse.Listener<Challenge> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/challenge/create";
+        JSONObject body = new JSONObject();
+
+        try {
+            body.put("title", title);
+            body.put("description", description);
+            body.put("distance", distance);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return ApiRequest.post(
+                Challenge.class, endpoint, headers,
+                body, resListener, errorListener);
     }
 }
 

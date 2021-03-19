@@ -34,28 +34,11 @@ public class GroupCreationActivity extends AppCompatActivity {
         String groupName = grpName.getText().toString();
         api.createGroup(groupName, res -> {
             Group group = res.getData();
-            String text = String.format("ID: %s\nName:%s\nCoach:%s",
-                    group.get_id(),
-                    group.getName(),
-                    group.getCoach().getEmail());
             //setSuccessText(text);
-            startActivity(new Intent(GroupCreationActivity.this, HomeActivity.class));
-        }, err -> {
-            // Unsuccessful
-            Toast.makeText(
-                    getApplicationContext(),
-                    err.getMessage(),
-                    Toast.LENGTH_SHORT).show();
-        });
-
-        //OLD Stuff CLEANUP LATER
-        //EditText groupName = findViewById(R.id.groupName);
-        //Context context = getApplicationContext();
-        //String text = "Your Group Has Been Created \n Group Name:" + groupName.getText().toString();
-
-        //int duration = Toast.LENGTH_SHORT;
-
-        //Toast toast = Toast.makeText(context, text, duration);
-        //toast.show();
+            finish();
+        }, err -> Toast.makeText(
+                getApplicationContext(),
+                err.getMessage(),
+                Toast.LENGTH_SHORT).show());
     }
 }
