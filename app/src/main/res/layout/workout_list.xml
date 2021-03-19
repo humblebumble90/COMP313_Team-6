@@ -26,7 +26,7 @@
                 android:textSize="16dp" />
 
             <TextView
-                android:id="@+id/workoutInstructions"
+                android:id="@+id/workoutRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="70dp"
@@ -35,20 +35,20 @@
                 android:textSize="16dp" />
 
             <TextView
-                android:id="@+id/workout"
+                android:id="@+id/workoutInstruction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:textColor="@color/black"
-                android:text="Coach's Instructions:"
+                android:text="@string/coach_instructions_text"
                 android:textSize="16dp" />
 
             <TextView
-                android:id="@+id/workoutDetails"
+                android:id="@+id/workoutProgress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="130dp"
-                android:text="Workout Type:"
+                android:text="@string/workout_progress_text"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
 
@@ -56,10 +56,18 @@
                 android:id="@+id/workoutName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/workoutName_Text"
+                android:text="@string/workoutname_text"
                 android:textSize="24sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/challengeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="130dp"
+                android:layout_alignParentRight="true"
+                android:text="@string/challenge_text" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
