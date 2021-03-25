@@ -11,6 +11,7 @@ import com.example.fat2fit.helpers.StringHelper;
 import com.example.fat2fit.models.Challenge;
 import com.example.fat2fit.models.Group;
 import com.example.fat2fit.models.GroupActivity;
+import com.example.fat2fit.models.Participant;
 import com.example.fat2fit.models.PasswordSecurity;
 import com.example.fat2fit.models.User;
 import com.example.fat2fit.models.UserToken;
@@ -111,14 +112,11 @@ public class Fat2FitApi {
             e.printStackTrace();
             return null;
         }
-
-         // Up to you if you want to auto load the token
         ApiResponse.Listener<UserToken> wrapper = data -> {
             setAuthorization(data.getData().getToken());
             saveEmailAndPassword(email, password);
             resListener.onResponse(data);
         };
-
         return ApiRequest.post(
                 UserToken.class, endpoint, headers,
                 body, wrapper, errorListener);
@@ -394,7 +392,7 @@ public class Fat2FitApi {
     /**
      * Customer rep only
      */
-    public ApiRequest<Challenge[]> getChallenges(
+    public ApiRequest<Challenge[]> getAllChallenges(
             ApiResponse.Listener<Challenge[]> resListener,
             Response.ErrorListener errorListener
     ) {
@@ -454,6 +452,69 @@ public class Fat2FitApi {
 
         return ApiRequest.post(
                 Challenge.class, endpoint, headers,
+                body, resListener, errorListener);
+    }
+
+    //--------------------------------------------------
+
+    /**
+     * Note this is for the user
+     */
+    public ApiRequest<Challenge[]> getAvailableChallenges(
+            ApiResponse.Listener<Challenge[]> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/challenge/available";
+        return ApiRequest.get(
+                Challenge[].class, endpoint, headers,
+                resListener, errorListener);
+    }
+
+    public ApiRequest<Participant[]> getMyActiveChallenges(
+            ApiResponse.Listener<Participant[]> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/challenge/active";
+        return ApiRequest.get(
+                Participant[].class, endpoint, headers,
+                resListener, errorListener);
+    }
+
+    public ApiRequest<Participant> participateInChallenge(
+            String challengeId,
+            ApiResponse.Listener<Participant> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        if (StringHelper.isBlank(challengeId)) {
+            Log.e("participateInChallenge","ChallengeId is blank");
+            return null;
+        }
+        final String endpoint = API_URL + "/challenge/participate/" + challengeId;
+        return ApiRequest.get(
+                Participant.class, endpoint, headers,
+                resListener, errorListener);
+    }
+
+    public ApiRequest<Participant> updateChallengeProgress(
+            String challengeId,
+            double newDistance,
+            ApiResponse.Listener<Participant> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        if (StringHelper.isBlank(challengeId)) {
+            Log.e("challengeProgress","ChallengeId is blank");
+            return null;
+        }
+        final String endpoint = API_URL + "/challenge/progress/" + challengeId;
+        JSONObject body = new JSONObject();
+        try {
+            body.put("distance", newDistance);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return ApiRequest.post(
+                Participant.class, endpoint, headers,
                 body, resListener, errorListener);
     }
 }
