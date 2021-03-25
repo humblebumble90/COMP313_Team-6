@@ -5,22 +5,25 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fat2fit.models.Challenge;
+
+import java.util.List;
+
 public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHolder> {
 
-    String name[], detail[];
+    List<Challenge> workoutChallenges;
     Context context;
 
-    public WorkoutAdaptor(Context ct, String workoutName[], String workoutDetails[]){
+    public WorkoutAdaptor(Context ct, List<Challenge> workouts){
         context = ct;
-        name = workoutName;
-        detail = workoutDetails;
-
+        workoutChallenges = workouts;
     }
     @NonNull
     @Override
@@ -32,15 +35,18 @@ public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.workoutName.setText(name[position]);
-        holder.workoutDetails.setText(detail[position]);
-
+        Challenge currentWorkout = workoutChallenges.get(position);
+        holder.workoutName.setText(currentWorkout.getTitle());
+        holder.workoutInstruction.setText(context.getString(R.string.coach_instructions_text) + currentWorkout.getDescription());
+        //holder.workoutRate.setText();
+        //holder.workoutProgress.setText();
+        //holder.workoutType.setText();
         holder.workoutList.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, WorkoutDetailsActivity.class);
-                intent.putExtra("name", name[position]);
-                intent.putExtra("detail", detail[position]);
+                intent.putExtra("name", "this has worked");
+                intent.putExtra("detail", "this has worked");
                 context.startActivity(intent);
 
             }
@@ -49,20 +55,26 @@ public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHo
 
     @Override
     public int getItemCount() {
-        return name.length;
+        return workoutChallenges.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView workoutName;
-        TextView workoutDetails;
-        ConstraintLayout workoutList;
+        TextView workoutInstruction;
+        TextView workoutType;
+        TextView workoutRate;
+        TextView workoutProgress;
+        RelativeLayout workoutList;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             workoutName = itemView.findViewById(R.id.workoutName);
-            workoutDetails = itemView.findViewById(R.id.workoutDetails);
+            workoutInstruction = itemView.findViewById(R.id.workoutInstruction);
             workoutList = itemView.findViewById(R.id.workoutList);
+            workoutType = itemView.findViewById(R.id.workoutType);
+            workoutRate = itemView.findViewById(R.id.workoutRate);
+            workoutProgress = itemView.findViewById(R.id.workoutProgress);
         }
     }
 }
