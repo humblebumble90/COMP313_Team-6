@@ -94,6 +94,24 @@ public class Fat2FitApi {
         }
     }
 
+    public boolean isLoggedIn() {
+        return !StringHelper.isNullOrEmpty(getAuthorization());
+    }
+
+    /**
+     * (Optional:) put as first line in methods to cancel the request
+     * if they are not logged in
+     * @return true if NOT logged in
+     */
+    private boolean loginCheck(Response.ErrorListener errorListener) {
+        // TODO: Put in all api methods that require auth
+        if (isLoggedIn()) return false;
+        final String msg = "Unauthorized: Please login first";
+        final int code = 401;
+        errorListener.onErrorResponse(new ApiResponse.MetaVolleyError(code, msg));
+        return true;
+    }
+
     //--------------------------------------------------
 
     public ApiRequest<UserToken> login(
@@ -165,6 +183,7 @@ public class Fat2FitApi {
             ApiResponse.Listener<User> resListener,
             Response.ErrorListener errorListener
     ) {
+        if (loginCheck(errorListener)) return null;
         final String endpoint = API_URL + "/account/fitdata";
         JSONObject body = new JSONObject();
 
@@ -333,6 +352,7 @@ public class Fat2FitApi {
             ApiResponse.Listener<Workout[]> resListener,
             Response.ErrorListener errorListener
     ) {
+        if (loginCheck(errorListener)) return null;
         final String endpoint = API_URL + "/workout/recommended";
         return ApiRequest.get(
                 Workout[].class, endpoint, headers,
@@ -373,7 +393,6 @@ public class Fat2FitApi {
     ) {
         final String endpoint = API_URL + "/admin/search";
         JSONObject body = new JSONObject();
-
         try {
             body.put("term", term);
             body.put("email", term);
@@ -381,7 +400,6 @@ public class Fat2FitApi {
             e.printStackTrace();
             return null;
         }
-
         return ApiRequest.post(
                 User[].class, endpoint, headers,
                 body, resListener, errorListener);
@@ -485,7 +503,8 @@ public class Fat2FitApi {
             ApiResponse.Listener<Participant> resListener,
             Response.ErrorListener errorListener
     ) {
-        if (StringHelper.isBlank(challengeId)) {
+        if (loginCheck(errorListener)) return null;
+        else if (StringHelper.isBlank(challengeId)) {
             Log.e("participateInChallenge","ChallengeId is blank");
             return null;
         }
@@ -501,7 +520,8 @@ public class Fat2FitApi {
             ApiResponse.Listener<Participant> resListener,
             Response.ErrorListener errorListener
     ) {
-        if (StringHelper.isBlank(challengeId)) {
+        if (loginCheck(errorListener)) return null;
+        else if (StringHelper.isBlank(challengeId)) {
             Log.e("challengeProgress","ChallengeId is blank");
             return null;
         }
