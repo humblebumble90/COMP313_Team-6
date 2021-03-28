@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.example.fat2fit.api.ApiResponse;
 import com.example.fat2fit.api.Fat2FitApi;
+import com.example.fat2fit.helpers.StringHelper;
 import com.example.fat2fit.models.PasswordSecurity;
 
 public class ForgotPasswordTwoActivity extends AppCompatActivity {
@@ -66,6 +67,14 @@ public class ForgotPasswordTwoActivity extends AppCompatActivity {
         answerQuestionsButton.setEnabled(false);
         security.answer1 = answer1Text.getText().toString();
         security.answer2 = answer2Text.getText().toString();
+
+        if (StringHelper.isBlank(security.answer1) ||
+            StringHelper.isBlank(security.answer2)) {
+            Toast.makeText(getApplicationContext(),
+                    "Must enter valid answers",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         api.answerQuestions(email, security, this::handleResponse, this::handleError);
     }

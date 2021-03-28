@@ -7,12 +7,14 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.android.volley.Response;
+import com.example.fat2fit.helpers.StringHelper;
 import com.example.fat2fit.models.Challenge;
 import com.example.fat2fit.models.Group;
 import com.example.fat2fit.models.GroupActivity;
 import com.example.fat2fit.models.PasswordSecurity;
 import com.example.fat2fit.models.User;
 import com.example.fat2fit.models.UserToken;
+import com.example.fat2fit.models.Workout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -314,7 +316,7 @@ public class Fat2FitApi {
         try {
             body.put("title", title);
             body.put("description", description);
-            if (hyperlink != null && !hyperlink.isEmpty()) {
+            if (!StringHelper.isBlank(hyperlink)) {
                 body.put("hyperlink", hyperlink);
             }
         } catch (JSONException e) {
@@ -329,27 +331,14 @@ public class Fat2FitApi {
 
     //--------------------------------------------------
 
-    public ApiRequest<Group> getRecommendedWorkouts(
-            ApiResponse.Listener<GroupActivity[]> resListener,
+    public ApiRequest<Workout[]> getRecommendedWorkouts(
+            ApiResponse.Listener<Workout[]> resListener,
             Response.ErrorListener errorListener
     ) {
         final String endpoint = API_URL + "/workout/recommended";
-
-        // NOTE: Gson does not handle Generic arrays too well. To get around this issue,
-        // we decided to wrap the response in a 'Group' object, that way we'd have access to
-        // the 'activities' which can then be casted to 'Workout'
-
-        ApiResponse.Listener<Group> wrapper = res -> {
-            Group group = res.getData();
-            ApiResponse<GroupActivity[]> trueResponse = new ApiResponse<>();
-            trueResponse.setMeta(res.getMeta());
-            trueResponse.setData(group.getActivities());
-            resListener.onResponse(trueResponse);
-        };
-
         return ApiRequest.get(
-                Group.class, endpoint, headers,
-                wrapper, errorListener);
+                Workout[].class, endpoint, headers,
+                resListener, errorListener);
     }
 
     //--------------------------------------------------
@@ -360,7 +349,7 @@ public class Fat2FitApi {
             Response.ErrorListener errorListener
     ) {
         final String _id = original.get_id();
-        if (_id == null || _id.isEmpty()) {
+        if (StringHelper.isBlank(_id)) {
             Log.e("AdminUpdateUser","Id is null or empty");
             return null;
         }
@@ -424,7 +413,7 @@ public class Fat2FitApi {
             Response.ErrorListener errorListener
     ) {
         String id = challenge.get_id();
-        if (id == null || id.isEmpty()) return null;
+        if (StringHelper.isBlank(id)) return null;
         final String endpoint = API_URL + "/cusrep/challenges/" + id;
         JSONObject body = new JSONObject();
 

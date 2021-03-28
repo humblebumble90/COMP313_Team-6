@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.example.fat2fit.api.ApiResponse;
 import com.example.fat2fit.api.Fat2FitApi;
+import com.example.fat2fit.helpers.StringHelper;
 import com.example.fat2fit.models.User;
 
 public class ResetPasswordActivity extends AppCompatActivity {
@@ -42,7 +43,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         resetPasswordButton.setEnabled(false);
         String newPassword = passwordText.getText().toString();
 
-        if (newPassword.isEmpty()) {
+        if (StringHelper.isBlank(newPassword)) {
             resetPasswordButton.setEnabled(true);
             Toast.makeText(
                     getApplicationContext(),
