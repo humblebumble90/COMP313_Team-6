@@ -20,9 +20,9 @@ public class RecommendedWorkoutActivity extends AppCompatActivity {
         workoutName = getResources().getStringArray(R.array.workouts);
         workoutsDetails = getResources().getStringArray(R.array.workouts_details);
 
-        WorkoutAdaptor workoutAdaptor = new WorkoutAdaptor(this, workoutName, workoutsDetails);
-        workoutRecyclerView.setAdapter(workoutAdaptor);
-        workoutRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        WorkoutAdaptor workoutAdaptor = new WorkoutAdaptor(this, workoutName, workoutsDetails);
+//        workoutRecyclerView.setAdapter(workoutAdaptor);
+//        workoutRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 }
