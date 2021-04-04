@@ -8,6 +8,7 @@ import com.example.fat2fit.models.Group;
 import com.example.fat2fit.models.GroupActivity;
 import com.example.fat2fit.models.User;
 import com.example.fat2fit.models.UserToken;
+import com.example.fat2fit.models.Workout;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -105,11 +106,11 @@ public class ApiDebugActivity extends AppCompatActivity {
 
     private void testGetRecommendedWorkouts() {
         api.getRecommendedWorkouts(res -> {
-            GroupActivity[] workouts = res.getData();
+            Workout[] workouts = res.getData();
             StringBuilder sb = new StringBuilder();
-            for (GroupActivity w : workouts) {
-                sb.append(w.getTitle()).append(" (");
-                sb.append(w.getHyperlink()).append(")\n");
+            for (Workout w : workouts) {
+                sb.append(w.getWorkoutName()).append(" (");
+                sb.append(w.getVideoHyperlink()).append(")\n");
             }
             setSuccessText(sb.toString());
         }, stdErrListener);

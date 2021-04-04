@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.fat2fit.helpers.StringHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -124,9 +125,18 @@ public class ApiResponse<T> {
             this.meta = meta;
         }
 
+        public MetaVolleyError(int code, String msg) {
+            this(new Meta(code, msg));
+        }
+
         @Override
         public String getMessage() {
             return meta.getMsg();
+        }
+
+        @Override
+        public String toString() {
+            return !StringHelper.isNullOrEmpty(meta.getMsg()) ? meta.getMsg() : "Error";
         }
     }
 }
