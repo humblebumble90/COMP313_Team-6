@@ -7,12 +7,14 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.example.fat2fit.helpers.StringHelper;
 import com.example.fat2fit.models.Challenge;
 import com.example.fat2fit.models.Group;
 import com.example.fat2fit.models.GroupActivity;
 import com.example.fat2fit.models.Participant;
 import com.example.fat2fit.models.PasswordSecurity;
+import com.example.fat2fit.models.Reward;
 import com.example.fat2fit.models.User;
 import com.example.fat2fit.models.UserToken;
 import com.example.fat2fit.models.Workout;
@@ -321,6 +323,24 @@ public class Fat2FitApi {
                 resListener, errorListener);
     }
 
+    public ApiRequest<Group> removeGroupMember(
+            String groupId, String memberId,
+            ApiResponse.Listener<Group> resListener,
+            Response.ErrorListener errorListener
+    ) {
+       final String endpoint = API_URL + "/group/" + groupId + "/remove";
+       JSONObject body = new JSONObject();
+       try {
+           body.put("member", memberId);
+       } catch (JSONException e) {
+           e.printStackTrace();
+           return null;
+       }
+       return ApiRequest.put(
+               Group.class, endpoint, headers,
+               body, resListener, errorListener);
+    }
+
     public ApiRequest<GroupActivity> createGroupActivity(
             String groupId,
             String title, String description,
@@ -425,6 +445,7 @@ public class Fat2FitApi {
      */
     public ApiRequest<Challenge> updateChallenge(
             Challenge challenge,
+            @Nullable String rewardId,
             ApiResponse.Listener<Challenge> resListener,
             Response.ErrorListener errorListener
     ) {
@@ -437,12 +458,14 @@ public class Fat2FitApi {
             body.put("title", challenge.getTitle());
             body.put("description", challenge.getDescription());
             body.put("distance", challenge.getDistance());
-            // TODO: Add field to update reward
+            if (!StringHelper.isNullOrEmpty(rewardId)) {
+                // TODO: Properly test
+                body.put("reward", rewardId);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
         }
-
         return ApiRequest.post(
                 Challenge.class, endpoint, headers,
                 body, resListener, errorListener);
@@ -456,7 +479,7 @@ public class Fat2FitApi {
             ApiResponse.Listener<Challenge> resListener,
             Response.ErrorListener errorListener
     ) {
-        final String endpoint = API_URL + "/challenge/create";
+        final String endpoint = API_URL + "/cusrep/challenge/create";
         JSONObject body = new JSONObject();
 
         try {
@@ -467,9 +490,61 @@ public class Fat2FitApi {
             e.printStackTrace();
             return null;
         }
-
         return ApiRequest.post(
                 Challenge.class, endpoint, headers,
+                body, resListener, errorListener);
+    }
+
+    public ApiRequest<Reward> createReward(
+            String title, String company,
+            ApiResponse.Listener<Reward> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/cusrep/reward/create";
+        JSONObject body = new JSONObject();
+        try {
+            body.put("title", title);
+            body.put("company", company);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return ApiRequest.put(
+                Reward.class, endpoint, headers,
+                body, resListener, errorListener);
+    }
+
+    public ApiRequest<Reward[]> getRewards(
+            ApiResponse.Listener<Reward[]> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        final String endpoint = API_URL + "/cusrep/rewards";
+        return ApiRequest.get(
+                Reward[].class, endpoint, headers,
+                resListener, errorListener);
+    }
+
+    public ApiRequest<Reward> updateReward(
+            Reward reward,
+            ApiResponse.Listener<Reward> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        if (reward == null || StringHelper.isBlank(reward.get_id())) {
+            errorListener.onErrorResponse(
+                    new VolleyError("Reward is missing details"));
+            return null;
+        }
+        final String endpoint = API_URL + "/cusrep/reward/" + reward.get_id();
+        JSONObject body = new JSONObject();
+        try {
+            body.put("title", reward.getTitle());
+            body.put("company", reward.getCompany());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return ApiRequest.put(
+                Reward.class, endpoint, headers,
                 body, resListener, errorListener);
     }
 
