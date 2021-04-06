@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fat2Fit">
-        <activity android:name=".group_member_remove"></activity>
+        <activity android:name=".CustomerRepEditReward"></activity>
+        <activity android:name=".CustomerRepAddRewardActivity" />
+        <activity android:name=".CustomerRepRewardActivity" />
+        <activity android:name=".group_member_remove" />
         <activity android:name=".tests.TestNavActivity" />
         <activity android:name=".tests.TestAdminActivity2_Searching" />
         <activity android:name=".tests.TestFitnessDataActivity" />

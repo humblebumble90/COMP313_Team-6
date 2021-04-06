@@ -65,4 +65,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), group_member_remove.class));
     }
 
+    public void CustomerRepReward(View view)
+    {
+        startActivity(new Intent(getApplicationContext(), CustomerRepRewardActivity.class));
+    }
+
 }
