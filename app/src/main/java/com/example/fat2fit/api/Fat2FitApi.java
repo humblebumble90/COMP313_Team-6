@@ -366,6 +366,17 @@ public class Fat2FitApi {
                 body, resListener, errorListener);
     }
 
+    public ApiRequest<Group[]> getMyGroups(
+            ApiResponse.Listener<Group[]> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        if (loginCheck(errorListener)) return null;
+        final String endpoint = API_URL + "/group/mine";
+        return ApiRequest.get(
+                Group[].class, endpoint, headers,
+                resListener, errorListener);
+    }
+
     //--------------------------------------------------
 
     public ApiRequest<Workout[]> getRecommendedWorkouts(
