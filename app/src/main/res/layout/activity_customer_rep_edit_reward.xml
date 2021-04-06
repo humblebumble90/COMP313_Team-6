@@ -4,148 +4,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".CustomerRepEditReward">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/editRewardLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is the Home Page"
+        android:text="What details of this reward do you want to edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.073" />
 
-    <Button
-        android:id="@+id/recommendedWorkoutBtn"
+    <TextView
+        android:id="@+id/rewardNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recommended Workout"
+        android:text="Reward Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintHorizontal_bias="0.324"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="recommendedWorkout"
-        app:layout_constraintVertical_bias="0.109" />
+        app:layout_constraintVertical_bias="0.203" />
 
-    <Button
-        android:id="@+id/groupCreationBtn"
+    <EditText
+        android:id="@+id/rewardName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Group Creation"
+        android:ems="10"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="groupCreation"
-        app:layout_constraintVertical_bias="0.218" />
+        app:layout_constraintVertical_bias="0.239" />
 
-    <Button
-        android:id="@+id/userProfileBtn"
+    <TextView
+        android:id="@+id/rewardLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="userProfile"
-        android:text="User Profile"
+        android:text="What Is The Reward"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintHorizontal_bias="0.354"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.332" />
+        app:layout_constraintVertical_bias="0.313" />
 
-    <Button
-        android:id="@+id/customerRepBtn"
+    <EditText
+        android:id="@+id/reward"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="customerRep"
-        android:text="testing customer rep"
+        android:ems="10"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.436" />
+        app:layout_constraintVertical_bias="0.352" />
 
-    <Button
-        android:id="@+id/btnJoinMainAct"
-        android:layout_width="184dp"
-        android:layout_height="63dp"
-        android:onClick="joinGroup"
-        android:text="Join/Leave Activity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559" />
-
-    <Button
-        android:id="@+id/btnCreateActivity"
+    <TextView
+        android:id="@+id/rewardChallengeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Activity"
-        android:onClick="ActivityCreation"
+        android:text="What Challenge Is Attached To This Reward"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintHorizontal_bias="0.716"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.683" />
+        app:layout_constraintVertical_bias="0.425" />
 
-    <Button
-        android:id="@+id/TestAdminViewBtn"
-        android:layout_width="164dp"
-        android:layout_height="49dp"
-        android:onClick="TestAdminView"
-        android:text="TestAdminView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateActivity"
-        app:layout_constraintVertical_bias="0.197" />
-
-    <Button
-        android:id="@+id/btnUnit"
+    <EditText
+        android:id="@+id/rewardChallenge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="UnitTest"
-        android:text="Unit Testing"
+        android:ems="10"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844" />
+        app:layout_constraintVertical_bias="0.473" />
 
     <Button
-        android:id="@+id/RmvGrpMbr"
+        android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remove Group Member"
-        android:onClick="RemoveGrpMbr"
+        android:onClick="submit"
+        android:text="@string/submit_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.915" />
+        app:layout_constraintVertical_bias="0.597" />
 
     <Button
-        android:id="@+id/repRewardBtn"
+        android:id="@+id/goBackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="CustomerRepReward"
-        android:text="Customer Rep Reward"
+        android:onClick="goBack"
+        android:text="@string/go_back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.018"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714" />
-
+        app:layout_constraintVertical_bias="0.597" />
 </androidx.constraintlayout.widget.ConstraintLayout>
