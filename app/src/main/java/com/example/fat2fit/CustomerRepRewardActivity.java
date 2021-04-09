@@ -38,6 +38,6 @@ public class CustomerRepRewardActivity extends AppCompatActivity {
     }
     public void goBack(View view)
     {
-        startActivity(new Intent(CustomerRepRewardActivity.this, HomeActivity.class));
+        finish();
     }
 }

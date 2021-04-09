@@ -18,7 +18,7 @@ public class CustomerRedEditChallengeActivity extends AppCompatActivity {
     }
     public void goBack(View view)
     {
-        startActivity(new Intent(CustomerRedEditChallengeActivity.this, CustomerRepChallengesActivity.class));
+        finish();
     }
     public void edit(View view)
     {

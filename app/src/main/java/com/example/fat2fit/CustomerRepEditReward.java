@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public class CustomerRepEditReward extends AppCompatActivity {
-// todo: Add api functionality
+// todo: Add api functionality and a way to submit edited reward
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +17,7 @@ public class CustomerRepEditReward extends AppCompatActivity {
     }
     public void submit(View view)
     {
-        String text = "Your Challenge Has Been Edited";
+        String text = "Your Reward Has Been Edited";
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
 
@@ -27,6 +27,6 @@ public class CustomerRepEditReward extends AppCompatActivity {
     }
     public void goBack(View view)
     {
-        startActivity(new Intent(CustomerRepEditReward.this, CustomerRepRewardActivity.class));
+        finish();
     }
 }
