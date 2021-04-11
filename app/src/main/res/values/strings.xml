@@ -78,6 +78,9 @@
     <string name="challenge_label">Challenges Currently Being Run</string>
     <string name="view_edit_label">Click on a challenge to view and edit details</string>
 
+    <string name="my_challenges">My Active Challenges</string>
+    <string name="viewMyChallenges">Click on a challenge to view details</string>
+
     <string name="add_challenge_title">What are the details of this new challenge</string>
     <string name="challenge_condition">Challenge Condition:</string>
     <string name="challenge_remaining_days">Remaining Days:</string>
@@ -98,6 +101,8 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
+    <string name="AssignExercise_Assign">Assign</string>
+    <string name = "AssignExercise_Back">Back</string>
     <string-array name="workouts">
         <item>Push Up</item>
         <item>Bench Press</item>
@@ -150,17 +155,17 @@
         <item>Placeholder Details</item>
     </string-array>
 
-    <string-array name="reward_challenge">
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
+    <string-array name="reward_company">
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
     </string-array>
 
     <!--Recommended Workout Strings -->

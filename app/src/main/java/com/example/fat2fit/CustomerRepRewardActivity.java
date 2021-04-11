@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class CustomerRepRewardActivity extends AppCompatActivity {
     // todo: Add api functionality
     RecyclerView rewardsRecyclerView;
-    String name[], detail[], challenge[];
+    String name[], detail[], company[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +22,9 @@ public class CustomerRepRewardActivity extends AppCompatActivity {
         rewardsRecyclerView = findViewById(R.id.rewardsRecyclerView);
         name = getResources().getStringArray(R.array.reward);
         detail = getResources().getStringArray(R.array.reward_details);
-        challenge = getResources().getStringArray(R.array.reward_challenge);
+        company = getResources().getStringArray(R.array.reward_company);
 
-        RewardAdaptor rewardAdaptor = new RewardAdaptor(this, name, detail, challenge);
+        RewardAdaptor rewardAdaptor = new RewardAdaptor(this, name, detail, company);
         rewardsRecyclerView.setAdapter(rewardAdaptor);
         rewardsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

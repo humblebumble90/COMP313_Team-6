@@ -14,11 +14,11 @@ public class RewardAdaptor extends RecyclerView.Adapter<RewardAdaptor.MyViewHold
     String data1[], data2[], data3[];
     Context context;
 
-    public RewardAdaptor(Context ct, String rewardName[], String rewardDetail[], String rewardChallenge[]){
+    public RewardAdaptor(Context ct, String rewardName[], String rewardDetail[], String rewardCompany[]){
         context = ct;
         data1 = rewardName;
         data2 = rewardDetail;
-        data3 = rewardChallenge;
+        data3 = rewardCompany;
     }
     @NonNull
     @Override
@@ -32,7 +32,7 @@ public class RewardAdaptor extends RecyclerView.Adapter<RewardAdaptor.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.rewardName.setText(data1[position]);
         holder.rewardDetail.setText(data2[position]);
-        holder.rewardChallenge.setText(data3[position]);
+        holder.rewardCompany.setText(data3[position]);
     }
 
     @Override
@@ -42,12 +42,12 @@ public class RewardAdaptor extends RecyclerView.Adapter<RewardAdaptor.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView rewardName, rewardDetail, rewardChallenge;
+        TextView rewardName, rewardDetail, rewardCompany;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             rewardName = itemView.findViewById(R.id.rewardName);
             rewardDetail = itemView.findViewById(R.id.rewardDetail);
-            rewardChallenge = itemView.findViewById(R.id.rewardChallenge);
+            rewardCompany = itemView.findViewById(R.id.rewardCompany);
         }
     }
 }

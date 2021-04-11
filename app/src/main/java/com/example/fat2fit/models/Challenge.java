@@ -11,7 +11,7 @@ public class Challenge {
     private String _id, title, description, closes;
     private double distance;
     private char state = State.AVAILABLE;
-    // private Reward reward;
+//    private Reward reward;
 
     public Challenge() {}
 
@@ -64,4 +64,12 @@ public class Challenge {
     public void setState(char state) {
         this.state = state;
     }
+
+//    public Reward getReward() {
+//        return reward;
+//    }
+//
+//    public void setReward(Reward reward) {
+//        this.reward = reward;
+//    }
 }

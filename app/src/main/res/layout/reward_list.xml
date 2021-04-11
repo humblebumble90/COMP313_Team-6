@@ -26,11 +26,11 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:id="@+id/rewardChallenge"
+                    android:id="@+id/rewardCompany"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="70dp"
-                    android:text="Reward Challenge"
+                    android:text="Reward Company"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
 
