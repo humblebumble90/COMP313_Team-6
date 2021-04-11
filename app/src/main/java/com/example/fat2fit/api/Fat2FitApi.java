@@ -506,7 +506,7 @@ public class Fat2FitApi {
     }
 
     public ApiRequest<Reward> createReward(
-            String title, String company,
+            String title, String description, String company,
             ApiResponse.Listener<Reward> resListener,
             Response.ErrorListener errorListener
     ) {
@@ -514,6 +514,7 @@ public class Fat2FitApi {
         JSONObject body = new JSONObject();
         try {
             body.put("title", title);
+            body.put("description", description);
             body.put("company", company);
         } catch (JSONException e) {
             e.printStackTrace();
