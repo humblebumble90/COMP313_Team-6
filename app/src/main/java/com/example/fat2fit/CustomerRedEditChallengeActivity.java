@@ -28,6 +28,6 @@ public class CustomerRedEditChallengeActivity extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-        startActivity(new Intent(CustomerRedEditChallengeActivity.this, CustomerRedEditChallengeActivity.class));
+        finish();
     }
 }
