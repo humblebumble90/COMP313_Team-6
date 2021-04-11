@@ -470,7 +470,6 @@ public class Fat2FitApi {
             body.put("description", challenge.getDescription());
             body.put("distance", challenge.getDistance());
             if (!StringHelper.isNullOrEmpty(rewardId)) {
-                // TODO: Properly test
                 body.put("reward", rewardId);
             }
         } catch (JSONException e) {
@@ -549,6 +548,7 @@ public class Fat2FitApi {
         JSONObject body = new JSONObject();
         try {
             body.put("title", reward.getTitle());
+            body.put("description", reward.getDescription());
             body.put("company", reward.getCompany());
         } catch (JSONException e) {
             e.printStackTrace();
