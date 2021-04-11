@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public class CustomerRepAddRewardActivity extends AppCompatActivity {
-    // todo: Add api functionality
+    // todo: Add api functionality and a way to submit reward
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,6 @@ public class CustomerRepAddRewardActivity extends AppCompatActivity {
     }
     public void goBack(View view)
     {
-        startActivity(new Intent(CustomerRepAddRewardActivity.this, CustomerRepRewardActivity.class));
+        finish();
     }
 }
