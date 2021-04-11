@@ -60,4 +60,18 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), TestNavActivity.class));
     }
 
+    public void RemoveGrpMbr(View view)
+    {
+        startActivity(new Intent(getApplicationContext(), group_member_remove.class));
+    }
+
+    public void CustomerRepReward(View view)
+    {
+        startActivity(new Intent(getApplicationContext(), CustomerRepRewardActivity.class));
+    }
+
+    public void ParticipateInChallenge(View v) {
+        startActivity(new Intent(getApplicationContext(), ParticipateInChallengeActivity.class));
+    }
+
 }

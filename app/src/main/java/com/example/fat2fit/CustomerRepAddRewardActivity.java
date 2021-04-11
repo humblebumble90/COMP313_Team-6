@@ -6,28 +6,27 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
-public class CustomerRedEditChallengeActivity extends AppCompatActivity {
-//todo add a way to edit challenges inside the list view
+public class CustomerRepAddRewardActivity extends AppCompatActivity {
+    // todo: Add api functionality and a way to submit reward
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_red_edit_challenge);
+        setContentView(R.layout.activity_customer_rep_add_reward);
     }
-    public void goBack(View view)
+    public void submit(View view)
     {
-        finish();
-    }
-    public void edit(View view)
-    {
-        String text = "Your Challenge Has Been Edited";
+        String text = "Your Reward Has Been Created";
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-        startActivity(new Intent(CustomerRedEditChallengeActivity.this, CustomerRedEditChallengeActivity.class));
+        startActivity(new Intent(CustomerRepAddRewardActivity.this, CustomerRepRewardActivity.class));
+    }
+    public void goBack(View view)
+    {
+        finish();
     }
 }

@@ -12,14 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fat2Fit">
-        <activity android:name=".tests.TestNavActivity"/>
+        <activity android:name=".ParticipateInChallengeActivity" />
+        <activity android:name=".CustomerRepEditReward" />
+        <activity android:name=".CustomerRepAddRewardActivity" />
+        <activity android:name=".CustomerRepRewardActivity" />
+        <activity android:name=".group_member_remove" />
+        <activity android:name=".tests.TestNavActivity" />
         <activity android:name=".tests.TestAdminActivity2_Searching" />
         <activity android:name=".tests.TestFitnessDataActivity" />
         <activity android:name=".tests.TestAdminActivity" />
         <activity android:name=".tests.TestLoginActivity" />
         <activity android:name=".tests.TestCreateGroupActivity" />
         <activity android:name=".tests.TestPassResetActivity" />
-        <activity android:name=".tests.TestJoin_LeaveGroupActivity"/>
+        <activity android:name=".tests.TestJoin_LeaveGroupActivity" />
         <activity android:name=".tests.TestCreateGroupActivitiesActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".CreateActivity" />
@@ -27,9 +32,10 @@
         <activity android:name=".CustomerRepAddChallengeActivity" />
         <activity android:name=".CustomerRepChallengesActivity" />
         <activity android:name=".Join_LeaveGroupActivity" />
-        <activity android:name=".WorkoutDetailsActivity"
-            android:parentActivityName=".RecommendedWorkoutActivity"
-            android:label="Details"/>
+        <activity
+            android:name=".WorkoutDetailsActivity"
+            android:label="Details"
+            android:parentActivityName=".RecommendedWorkoutActivity" />
         <activity android:name=".api.ApiDebugActivity" />
         <activity android:name=".ForgotPasswordTwoActivity" />
         <activity android:name=".ForgotPasswordActivity" />

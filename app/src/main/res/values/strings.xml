@@ -124,9 +124,50 @@
         <item>Placeholder Details</item>
     </string-array>
 
+    <string-array name="reward">
+        <item>Placeholder Reward</item>
+        <item>Placeholder Reward</item>
+        <item>Placeholder Reward</item>
+        <item>Placeholder Reward</item>
+        <item>Placeholder Reward</item>
+        <item>Placeholder Reward</item>
+        <item>Placeholder Reward</item>
+        <item>Placeholder Reward</item>
+        <item>Placeholder Reward</item>
+        <item>Placeholder Reward</item>
+    </string-array>
+
+    <string-array name="reward_details">
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+        <item>Placeholder Details</item>
+    </string-array>
+
+    <string-array name="reward_challenge">
+        <item>Placeholder Challenge</item>
+        <item>Placeholder Challenge</item>
+        <item>Placeholder Challenge</item>
+        <item>Placeholder Challenge</item>
+        <item>Placeholder Challenge</item>
+        <item>Placeholder Challenge</item>
+        <item>Placeholder Challenge</item>
+        <item>Placeholder Challenge</item>
+        <item>Placeholder Challenge</item>
+        <item>Placeholder Challenge</item>
+    </string-array>
+
     <!--Recommended Workout Strings -->
     <string name="workoutname_text">Workout Name</string>
     <string name="challenge_text">Challenge</string>
     <string name="workout_progress_text">Workout Progress:</string>
     <string name="coach_instructions_text">Coachs Instructions:</string>
+
+
 </resources>
