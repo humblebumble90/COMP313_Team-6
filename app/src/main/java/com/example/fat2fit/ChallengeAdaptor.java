@@ -37,8 +37,8 @@ public class ChallengeAdaptor extends RecyclerView.Adapter<ChallengeAdaptor.MyVi
         Challenge currentChallenge = challengeList.get(position);
         holder.challengeTitle.setText(currentChallenge.getTitle());
         holder.challengeDescription.setText(context.getString(R.string.challenge_description) + currentChallenge.getDescription());
-        holder.challengeDistance.setText(context.getString(R.string.challenge_distance) + currentChallenge.getDescription());
-        holder.challengeDescription.setText(context.getString(R.string.challenge_state) + currentChallenge.getDescription());
+        holder.challengeDistance.setText(context.getString(R.string.challenge_distance) + currentChallenge.getDistance());
+        holder.challengeState.setText(context.getString(R.string.challenge_state) + currentChallenge.getState());
 
 //        holder.challengeListLayout.setOnClickListener(new View.OnClickListener(){
 //            @Override
@@ -67,7 +67,7 @@ public class ChallengeAdaptor extends RecyclerView.Adapter<ChallengeAdaptor.MyVi
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            challengeTitle = itemView.findViewById(R.id.challenge_details_title);
+            challengeTitle = itemView.findViewById(R.id.challengeTitle);
             challengeDescription = itemView.findViewById(R.id.challengeDescription);
             challengeDistance = itemView.findViewById(R.id.challengeDistance);
             challengeState = itemView.findViewById(R.id.challengeState);
