@@ -12,16 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fat2fit.models.Workout;
+import com.example.fat2fit.models.Challenge;
 
 import java.util.List;
 
 public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHolder> {
 
-    List<Workout> workoutChallenges;
+    List<Challenge> workoutChallenges;
     Context context;
 
-    public WorkoutAdaptor(Context ct, List<Workout> workouts){
+    public WorkoutAdaptor(Context ct, List<Challenge> workouts){
         context = ct;
         workoutChallenges = workouts;
     }
@@ -35,7 +35,7 @@ public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Workout currentWorkout = workoutChallenges.get(position);
+        Challenge currentWorkout = workoutChallenges.get(position);
         holder.workoutName.setText(currentWorkout.getTitle());
         holder.workoutInstruction.setText(context.getString(R.string.coach_instructions_text) + currentWorkout.getDescription());
         //holder.workoutRate.setText();
@@ -75,6 +75,3 @@ public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHo
             workoutType = itemView.findViewById(R.id.workoutType);
             workoutRate = itemView.findViewById(R.id.workoutRate);
             workoutProgress = itemView.findViewById(R.id.workoutProgress);
-        }
-    }
-}

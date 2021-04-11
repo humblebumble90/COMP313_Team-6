@@ -36,7 +36,20 @@ public class ChallengeAdaptor extends RecyclerView.Adapter<ChallengeAdaptor.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Challenge currentChallenge = challengeList.get(position);
         holder.challengeTitle.setText(currentChallenge.getTitle());
-        holder.challengeDescription.setText(context.getString(R.string.coach_instructions_text) + currentChallenge.getDescription());
+        holder.challengeDescription.setText(context.getString(R.string.challenge_description) + currentChallenge.getDescription());
+        holder.challengeDistance.setText(context.getString(R.string.challenge_distance) + currentChallenge.getDescription());
+        holder.challengeDescription.setText(context.getString(R.string.challenge_state) + currentChallenge.getDescription());
+
+//        holder.challengeListLayout.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, WorkoutDetailsActivity.class);
+//                intent.putExtra("name", "this has worked");
+//                intent.putExtra("detail", "this has worked");
+//                context.startActivity(intent);
+//
+//            }
+//        });
     }
 
     @Override
