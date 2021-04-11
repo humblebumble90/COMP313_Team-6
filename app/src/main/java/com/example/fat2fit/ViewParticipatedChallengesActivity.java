@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.fat2fit.api.Fat2FitApi;
@@ -38,8 +39,9 @@ public class ViewParticipatedChallengesActivity extends AppCompatActivity {
                     {
                         challengeList.add(p.getChallenge());
                     }
-                    challengeAdaptor = new ChallengeAdaptor(this,challengeList);
-                    listView.setAdapter(challengeAdaptor);
+
+                    ArrayAdapter<Challenge> adapter = new ArrayAdapter<Challenge>(this,R.layout.challenge_list, challengeList);
+                    listView.setAdapter(adapter);
 
 
 
