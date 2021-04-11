@@ -72,4 +72,9 @@ public class Join_LeaveGroupActivity extends AppCompatActivity {
                 err.getMessage(),
                 Toast.LENGTH_SHORT).show();
     }
+
+    public void onViewGroupActivitiesClick(View v) {
+        Intent intent = new Intent(this, ViewGroupActivities.class);
+        startActivity(intent);
+    }
 }

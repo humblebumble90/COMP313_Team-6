@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fat2Fit">
+        <activity android:name=".ViewGroupActivities" />
         <activity android:name=".ParticipateInChallengeActivity" />
         <activity android:name=".CustomerRepEditReward" />
         <activity android:name=".CustomerRepAddRewardActivity" />
