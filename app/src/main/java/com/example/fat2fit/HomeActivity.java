@@ -70,4 +70,8 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), CustomerRepRewardActivity.class));
     }
 
+    public void ParticipateInChallenge(View v) {
+        startActivity(new Intent(getApplicationContext(), ParticipateInChallengeActivity.class));
+    }
+
 }
