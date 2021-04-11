@@ -23,7 +23,7 @@ public class CustomerRepAddChallengeActivity extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-        startActivity(new Intent(CustomerRepAddChallengeActivity.this, CustomerRepChallengesActivity.class));
+        finish();
     }
     public void goBack(View view)
     {

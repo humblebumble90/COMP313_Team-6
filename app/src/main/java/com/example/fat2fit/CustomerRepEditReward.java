@@ -23,7 +23,7 @@ public class CustomerRepEditReward extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-        startActivity(new Intent(CustomerRepEditReward.this, CustomerRepRewardActivity.class));
+        finish();
     }
     public void goBack(View view)
     {

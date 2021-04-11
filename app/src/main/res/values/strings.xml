@@ -155,17 +155,17 @@
         <item>Placeholder Details</item>
     </string-array>
 
-    <string-array name="reward_challenge">
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
-        <item>Placeholder Challenge</item>
+    <string-array name="reward_company">
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
+        <item>Placeholder Company</item>
     </string-array>
 
     <!--Recommended Workout Strings -->
