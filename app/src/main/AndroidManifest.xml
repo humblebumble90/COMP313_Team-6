@@ -14,6 +14,7 @@
         android:theme="@style/Theme.Fat2Fit" >
         <activity android:name=".ViewParticipatedChallengesActivity" >
         </activity>
+        <activity android:name=".AssignExerciseActivity"></activity>
         <activity android:name=".CustomerRepEditReward" />
         <activity android:name=".CustomerRepAddRewardActivity" />
         <activity android:name=".CustomerRepRewardActivity" />
