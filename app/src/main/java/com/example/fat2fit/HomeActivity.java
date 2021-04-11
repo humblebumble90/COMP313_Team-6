@@ -74,4 +74,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), ParticipateInChallengeActivity.class));
     }
 
+    public void testViewParticipatedChallenges(View v)
+    {
+        startActivity(new Intent(getApplicationContext(), ViewParticipatedChallengesActivity.class));
+    }
+
 }
