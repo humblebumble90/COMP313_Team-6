@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -44,5 +45,9 @@ public class ViewParticipatedChallengesActivity extends AppCompatActivity {
 
                 },
                 error -> {});
+    }
+    public void returnToHome(View v)
+    {
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     }
 }
