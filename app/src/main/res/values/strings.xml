@@ -103,6 +103,13 @@
 
     <string name="AssignExercise_Assign">Assign</string>
     <string name = "AssignExercise_Back">Back</string>
+
+    <string name = "challenge_title">Challenge title: </string>
+    <string name = "challenge_description">Challenge escription: </string>
+    <string name = "challenge_distance">Challenge distance: </string>
+    <string name = "challenge_state">Challenge state: </string>
+
+
     <string-array name="workouts">
         <item>Push Up</item>
         <item>Bench Press</item>
