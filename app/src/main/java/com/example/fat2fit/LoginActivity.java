@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, AdminActivity.class));
             } else if (role == User.Roles.CUSTOMER_REP) {
                 // logged in as Customer rep.
-                //startActivity();
+                startActivity(new Intent(LoginActivity.this, CustomerRepChallengesActivity.class));
             } else if (role == User.Roles.END_USER) {
                 // logged in as end user
                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
