@@ -446,9 +446,21 @@ public class Fat2FitApi {
             Response.ErrorListener errorListener
     ) {
         final String endpoint = API_URL + "/cusrep/challenges";
-        return ApiRequest.get(
-                Challenge[].class, endpoint, headers,
-                resListener, errorListener);
+        return ApiRequest.get(Challenge[].class, endpoint, headers, resListener, errorListener);
+    }
+
+    public ApiRequest<Reward> getChallengeReward(
+            String challengeId,
+            ApiResponse.Listener<Reward> resListener,
+            Response.ErrorListener errorListener
+    ) {
+        if (StringHelper.isNullOrEmpty(challengeId)) {
+            errorListener.onErrorResponse(
+                    new VolleyError("Invalid challenge id"));
+            return null;
+        }
+        final String endpoint = API_URL + "/cusrep/challenge/" + challengeId + "/reward";
+        return ApiRequest.get(Reward.class, endpoint, headers, resListener, errorListener);
     }
 
     /**
@@ -462,7 +474,7 @@ public class Fat2FitApi {
     ) {
         String id = challenge.get_id();
         if (StringHelper.isBlank(id)) return null;
-        final String endpoint = API_URL + "/cusrep/challenges/" + id;
+        final String endpoint = API_URL + "/cusrep/challenge/" + id;
         JSONObject body = new JSONObject();
 
         try {

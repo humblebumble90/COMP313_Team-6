@@ -20,11 +20,20 @@ public class ChallengeAdaptor extends RecyclerView.Adapter<ChallengeAdaptor.MyVi
 
     List<Challenge> challengeList;
     Context context;
+    OnChallengeClick handler;
 
     public ChallengeAdaptor(Context ct, List<Challenge> challenges){
         context = ct;
         challengeList = challenges;
     }
+
+    interface OnChallengeClick {
+        void onClick(Challenge challenge);
+    }
+    public void setOnClick(OnChallengeClick handler) {
+        this.handler = handler;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,6 +49,12 @@ public class ChallengeAdaptor extends RecyclerView.Adapter<ChallengeAdaptor.MyVi
         holder.challengeDescription.setText(context.getString(R.string.challenge_description) + currentChallenge.getDescription());
         holder.challengeDistance.setText(context.getString(R.string.challenge_distance) + currentChallenge.getDistance());
         holder.challengeState.setText(context.getString(R.string.challenge_state) + currentChallenge.getState());
+
+        if (this.handler != null) {
+            holder.challengeListLayout.setOnClickListener(v -> {
+                this.handler.onClick(currentChallenge);
+            });
+        }
 
 //        holder.challengeListLayout.setOnClickListener(new View.OnClickListener(){
 //            @Override
