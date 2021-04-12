@@ -170,8 +170,8 @@
 
     <!--Recommended Workout Strings -->
     <string name="workoutname_text">Workout Name</string>
-    <string name="workout_reps">No. of reps</string>
-    <string name="workout_hyperlink">Hyperlink:</string>
+    <string name="workout_reps">No. of reps: </string>
+    <string name="workout_hyperlink">Hyperlink: </string>
 
 
 </resources>
