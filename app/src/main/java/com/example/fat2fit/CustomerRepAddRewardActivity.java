@@ -34,9 +34,9 @@ public class CustomerRepAddRewardActivity extends AppCompatActivity {
         descriptionEditText = findViewById(R.id.rewardDetail);
         companyEditText = findViewById(R.id.rewardCompany);
 
-        String title = titleEditText.getText().toString();;
-        String description = descriptionEditText.getText().toString();;
-        String company = companyEditText.getText().toString();;
+        String title = titleEditText.getText().toString();
+        String description = descriptionEditText.getText().toString();
+        String company = companyEditText.getText().toString();
 
         api.createReward(title, description, company, res -> {
             Reward reward = res.getData(); // the reward you just created
@@ -53,8 +53,6 @@ public class CustomerRepAddRewardActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             // handle error
         });
-
-        finish();
     }
     public void goBack(View view)
     {

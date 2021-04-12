@@ -532,7 +532,7 @@ public class Fat2FitApi {
             e.printStackTrace();
             return null;
         }
-        return ApiRequest.put(
+        return ApiRequest.post(
                 Reward.class, endpoint, headers,
                 body, resListener, errorListener);
     }
@@ -567,7 +567,7 @@ public class Fat2FitApi {
             e.printStackTrace();
             return null;
         }
-        return ApiRequest.put(
+        return ApiRequest.post(
                 Reward.class, endpoint, headers,
                 body, resListener, errorListener);
     }
