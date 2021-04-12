@@ -22,10 +22,12 @@ public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHo
     Workout[] workoutChallenges;
     Context context;
 
+<<<<<<< HEAD
     public WorkoutAdaptor(Context ct, Workout[] workouts){
         context = ct;
         workoutChallenges = workouts;
     }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,7 +49,7 @@ public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHo
         return workoutChallenges.length;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView workoutName;
         TextView workoutRate;
