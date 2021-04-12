@@ -38,44 +38,26 @@ public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Workout currentWorkout = workoutChallenges[position];
         holder.workoutName.setText(currentWorkout.getWorkoutName());
-        holder.workoutInstruction.setText(context.getString(R.string.coach_instructions_text) + currentWorkout.);
-        //holder.workoutRate.setText();
-        //holder.workoutProgress.setText();
-        //holder.workoutType.setText();
-        holder.workoutList.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, WorkoutDetailsActivity.class);
-                intent.putExtra("name", "this has worked");
-                intent.putExtra("detail", "this has worked");
-                context.startActivity(intent);
-
-            }
-        });
+        holder.workoutHyperlink.setText(context.getString(R.string.workout_hyperlink) + currentWorkout.getVideoHyperlink());
+        holder.workoutRate.setText(context.getString(R.string.workout_hyperlink));
     }
 
     @Override
     public int getItemCount() {
-        return workoutChallenges.size();
+        return workoutChallenges.length;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView workoutName;
-        TextView workoutInstruction;
-        TextView workoutType;
         TextView workoutRate;
-        TextView workoutProgress;
-        RelativeLayout workoutList;
+        TextView workoutHyperlink;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             workoutName = itemView.findViewById(R.id.workoutName);
-            workoutInstruction = itemView.findViewById(R.id.workoutInstruction);
-            workoutList = itemView.findViewById(R.id.workoutList);
-            workoutType = itemView.findViewById(R.id.workoutType);
-            workoutRate = itemView.findViewById(R.id.workoutRate);
-            workoutProgress = itemView.findViewById(R.id.workoutProgress);
+            workoutHyperlink = itemView.findViewById(R.id.workoutHyperlink);
+            workoutRate = itemView.findViewById(R.id.workoutReps);
         }
     }
 }

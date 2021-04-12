@@ -20,30 +20,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05" />
 
-    <TextView
-        android:id="@+id/BMIText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/based_BMI_label"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
-
-    <TextView
-        android:id="@+id/BMIValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="value"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.759"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/workoutsRecyclerView"
         android:layout_width="410dp"

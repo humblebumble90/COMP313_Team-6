@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fat2fit.api.Fat2FitApi;
@@ -21,7 +22,6 @@ public class RecommendedWorkoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommended_workout);
-
         api = Fat2FitApi.getInstance(this);
         api.getRecommendedWorkouts(res -> {
             recommendedWorkouts = res.getData();
@@ -30,7 +30,7 @@ public class RecommendedWorkoutActivity extends AppCompatActivity {
         });
         workoutRecyclerView = findViewById(R.id.workoutsRecyclerView);
         WorkoutAdaptor workoutAdaptor = new WorkoutAdaptor(this, recommendedWorkouts);
-        //workoutRecyclerView.setAdapter(workoutAdaptor);
-        //workoutRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        workoutRecyclerView.setAdapter(workoutAdaptor);
+        workoutRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
