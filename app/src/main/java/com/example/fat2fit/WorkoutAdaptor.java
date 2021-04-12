@@ -22,7 +22,7 @@ public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHo
     Workout[] workoutChallenges;
     Context context;
 
-    public WorkoutAdaptor(Context ct, Workout[] workouts) {
+    public WorkoutAdaptor(Context ct, Workout[] workouts){
         context = ct;
         workoutChallenges = workouts;
     }
@@ -40,7 +40,7 @@ public class WorkoutAdaptor extends RecyclerView.Adapter<WorkoutAdaptor.MyViewHo
         Workout currentWorkout = workoutChallenges[position];
         holder.workoutName.setText(currentWorkout.getWorkoutName());
         holder.workoutHyperlink.setText(context.getString(R.string.workout_hyperlink) + currentWorkout.getVideoHyperlink());
-        holder.workoutRate.setText(context.getString(R.string.workout_hyperlink));
+        holder.workoutRate.setText(context.getString(R.string.workout_reps) + currentWorkout.getRepetition());
     }
 
     @Override

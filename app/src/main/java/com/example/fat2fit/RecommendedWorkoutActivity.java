@@ -4,18 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.fat2fit.api.Fat2FitApi;
-import com.example.fat2fit.models.GroupActivity;
 import com.example.fat2fit.models.Workout;
-
-import com.example.fat2fit.api.Fat2FitApi;
-import com.example.fat2fit.models.GroupActivity;
 
 public class RecommendedWorkoutActivity extends AppCompatActivity {
     Workout[] recommendedWorkouts;
@@ -28,12 +22,18 @@ public class RecommendedWorkoutActivity extends AppCompatActivity {
         api = Fat2FitApi.getInstance(this);
         api.getRecommendedWorkouts(res -> {
             recommendedWorkouts = res.getData();
-            workoutRecyclerView = findViewById(R.id.workoutsRecyclerView);
-            WorkoutAdaptor workoutAdaptor = new WorkoutAdaptor(this, recommendedWorkouts);
-            workoutRecyclerView.setAdapter(workoutAdaptor);
-            workoutRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            if(recommendedWorkouts == null ){
+                Toast.makeText(this, "ERROR: there is no workouts for this user",Toast.LENGTH_LONG);
+            }
+            else {
+                workoutRecyclerView = findViewById(R.id.workoutsRecyclerView);
+                WorkoutAdaptor workoutAdaptor = new WorkoutAdaptor(this, recommendedWorkouts);
+                workoutRecyclerView.setAdapter(workoutAdaptor);
+                workoutRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            }
         },err -> {
             Toast.makeText(this, err.getMessage(),Toast.LENGTH_LONG);
+            Log.e("RecommendedWorkouts", "onCreate: " + err.getMessage());
         });
     }
 }
