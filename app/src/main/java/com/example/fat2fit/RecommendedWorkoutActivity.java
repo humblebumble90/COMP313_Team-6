@@ -28,12 +28,12 @@ public class RecommendedWorkoutActivity extends AppCompatActivity {
         api = Fat2FitApi.getInstance(this);
         api.getRecommendedWorkouts(res -> {
             recommendedWorkouts = res.getData();
+            workoutRecyclerView = findViewById(R.id.workoutsRecyclerView);
+            WorkoutAdaptor workoutAdaptor = new WorkoutAdaptor(this, recommendedWorkouts);
+            workoutRecyclerView.setAdapter(workoutAdaptor);
+            workoutRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         },err -> {
             Toast.makeText(this, err.getMessage(),Toast.LENGTH_LONG);
         });
-        workoutRecyclerView = findViewById(R.id.workoutsRecyclerView);
-        WorkoutAdaptor workoutAdaptor = new WorkoutAdaptor(this, recommendedWorkouts);
-        workoutRecyclerView.setAdapter(workoutAdaptor);
-        workoutRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
