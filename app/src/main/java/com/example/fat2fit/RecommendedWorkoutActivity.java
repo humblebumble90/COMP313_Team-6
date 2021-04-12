@@ -14,6 +14,9 @@ import com.example.fat2fit.api.Fat2FitApi;
 import com.example.fat2fit.models.GroupActivity;
 import com.example.fat2fit.models.Workout;
 
+import com.example.fat2fit.api.Fat2FitApi;
+import com.example.fat2fit.models.GroupActivity;
+
 public class RecommendedWorkoutActivity extends AppCompatActivity {
     Workout[] recommendedWorkouts;
     RecyclerView workoutRecyclerView;
