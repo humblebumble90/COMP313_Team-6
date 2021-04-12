@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -28,9 +29,6 @@ public class ViewParticipatedChallengesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_participated_challenges);
         api =  Fat2FitApi.getInstance(this);
         recyclerView = findViewById(R.id.listChallenges);
-    }
-    void listParticipatedView(View v)
-    {
         api.getMyActiveChallenges(res -> {
                     Participant[] participants = res.getData();
                     List<Challenge> challengeList = new ArrayList<>();
@@ -44,5 +42,13 @@ public class ViewParticipatedChallengesActivity extends AppCompatActivity {
 
                 },
                 error -> {});
+    }
+    void listParticipatedView(View v)
+    {
+
+    }
+    public void returnToHome(View v)
+    {
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     }
 }
